@@ -180,7 +180,12 @@ ga('send', 'pageview');
 <p>接下来就是编辑你自己的<code>post-receive</code>文件内容了，也就是自动化部署的过程脚本，我的一个tp5的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">WORK_TREE=/usr/share/nginx/html</div><div class="line">echo $&#123;WORK_TREE&#125;</div><div class="line">git --work-tree=$&#123;WORK_TREE&#125; checkout  develop --force </div><div class="line">cd $&#123;WORK_TREE&#125; &amp;&amp; php think migrate:run</div></pre></td></tr></table></figure></p>
 <h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><h4 id="配置远程git库信息"><a href="#配置远程git库信息" class="headerlink" title="配置远程git库信息"></a>配置远程git库信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git remote add serverAlias sshUser@50.40.30.20:/opt/git/test.git</div></pre></td></tr></table></figure>
 <h4 id="推送至远程服务器"><a href="#推送至远程服务器" class="headerlink" title="推送至远程服务器"></a>推送至远程服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git push serverAlias develop</div></pre></td></tr></table></figure>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li>学历ssh config的配置方式和详细配置</li>
+<li>git参数<code>--bare</code>、<code>--work-tree</code>的理解</li>
+<li>git hooks脚本的类型和使用情景</li>
+</ul>
+
       
 
       
@@ -815,6 +820,10 @@ php think migrate:run
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">ssh</a>
               </li>
              
@@ -824,10 +833,6 @@ php think migrate:run
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">synology</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">git</a>
               </li>
              
               <li class="article-tag-list-item">
