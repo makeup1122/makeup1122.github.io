@@ -155,6 +155,476 @@ ga('send', 'pageview');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ssh-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/24/ssh-config/">使用ssh config配置文件</a>
+    </h1>
+  
+
+        <a href="/2018/01/24/ssh-config/" class="archive-article-date">
+  	<time datetime="2018-01-24T13:44:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-24</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ssh的config配置参数说明"><a href="#ssh的config配置参数说明" class="headerlink" title="ssh的config配置参数说明"></a>ssh的config配置参数说明</h1><h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><ul>
+<li>～/.ssh/config 用户配置文件。</li>
+<li>/etc/ssh/ssh_config 系统配置文件。</li>
+</ul>
+<p>ssh读取配置文件的优先级为：</p>
+<ol>
+<li>命令行参数。</li>
+<li>用户配置文件(~/.ssh/config)。</li>
+<li>系统配置文件(/etc/ssh/ssh_config)。<h3 id="一般格式"><a href="#一般格式" class="headerlink" title="一般格式"></a>一般格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Host *</div><div class="line">    	ControlMaster auto</div><div class="line">    	ControlPath ~/.ssh/%h-%p-%r</div><div class="line">    	ControlPersist yes</div><div class="line">Host server-alias</div><div class="line">    	HostName        129.12.12.122</div><div class="line">    	Port            22</div><div class="line">    	User            root</div><div class="line">        IdentityFile    ~/mykey/SSH/id_rsa</div><div class="line">Host text.com</div><div class="line">	    Port	22222</div><div class="line">	    User	text</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><h5 id="普通参数"><a href="#普通参数" class="headerlink" title="普通参数"></a>普通参数</h5><ul>
+<li>Host ：描述参数的作用范围。</li>
+<li>HostName ：ip或域名。当Host参数已经指明时可以不用指定该参数。</li>
+<li>User ：用户名。</li>
+<li>Port ：ssh端口号，默认22。</li>
+</ul>
+<h5 id="连接参数"><a href="#连接参数" class="headerlink" title="连接参数"></a>连接参数</h5><ul>
+<li>ServerAliveInterval ：发送心跳包到服务器的时间间隔(秒)。当ssh连接不稳定或不可靠时，你希望知道链接是否可用。</li>
+<li>LogLevel ：客户端记录日志的级别。对无需记录日志或者调试ssh链接时非常有用，可选参数从无到繁分别是：<code>QUIET, FATAL, ERROR, INFO, VERBOSE, DEBUG1, DEBUG2, and DEBUG3</code>。</li>
+<li>StrictHostKeyChecking ：是否自动校验服务端的host key并写入know_hosts。默认是询问(<code>ask</code>)，设置为<code>no</code>则会自动写入，当你需要链接大量服务器端时很有用，但也会产生安全问题，所以请谨慎使用。</li>
+<li>UserKnownHostsFile ：know_hosts的存放位置。一般无需单独配置该项，当<code>StrictHostKeyChecking</code>设置为’no’时，可以设置为<code>/dev/null</code>。</li>
+<li>VisualHostKey ：设置为<code>yes</code>可以告诉服务端以ASCII的格式返回服务器host key。我不知道有啥用，那个ASCII图不太能看懂。</li>
+<li>Compression ：开启数据压缩。当你的链接很慢或者需要scp时会很有用，一般用户无需这个参数。</li>
+<li>ConnectTimeout ：设置超时时间来覆盖系统默认的TCP连接超时时间。</li>
+</ul>
+<h5 id="转发参数"><a href="#转发参数" class="headerlink" title="转发参数"></a>转发参数</h5><p>略</p>
+<h5 id="关于key的参数"><a href="#关于key的参数" class="headerlink" title="关于key的参数"></a>关于key的参数</h5><ul>
+<li>IdentityFile ：为每个链接指定私钥文件的位置。当你的私钥文件不在默认位置(比如<code>~/.ssh/id_rsa</code>)或者你有多个不同功能的私钥文件时会很有用。</li>
+<li>IdentitiesOnly ：强制使用config文件内配置的某一私钥文件。当你有2个以上的私钥文件可用时会用到这个参数。</li>
+<li>IdentityAgent ：Specifies the UNIX-domain socket used to communicate with the authentication agent.</li>
+</ul>
+<h5 id="多路复用单个TCP链接"><a href="#多路复用单个TCP链接" class="headerlink" title="多路复用单个TCP链接"></a>多路复用单个TCP链接</h5><p>这个很有用，可以大幅提升ssh连接速度。</p>
+<ul>
+<li>ControlMaster ：当多路复用可用时是否开启。设置为<code>auto</code>即可启用。</li>
+<li>ControlPath ：设置socket文件的位置和文件名格式，比如可以设置为<code>~/.ssh/%h-%p-%r</code>。参考TOKEN的内容。</li>
+<li>ControlPersist ：复用链接的持续时间。可设置位为整数(秒)、<code>4h</code>(小时)、<code>yes</code>(长时间)等。</li>
+</ul>
+<h5 id="权限认证"><a href="#权限认证" class="headerlink" title="权限认证"></a>权限认证</h5><ul>
+<li>PasswordAuthentication ：设置是否开启密码认证。可选参数只能为<code>yes</code>或者<code>no</code>(默认为no)。</li>
+<li>PubkeyAuthentication：设置是否开启密钥认证。可选参数只能为<code>yes</code>或者<code>no</code>(默认为yes)。</li>
+</ul>
+<h5 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h5><ul>
+<li>LocalCommand ：连接服务器成功时在本地执行的命令。除非启用下面的PermitLocalCommand，否则该参数会被直接忽略。</li>
+<li>PermitLocalCommand ：运行本地执行命令。</li>
+<li>RemoteCommand ：连接服务器成功时在服务器端执行的命令。比如启动<code>tmux</code>。</li>
+</ul>
+<h3 id="TOKEN"><a href="#TOKEN" class="headerlink" title="TOKEN"></a>TOKEN</h3><p>Arguments to some keywords can make use of tokens, which are expanded at runtime:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">%%    A literal `%&apos;.</div><div class="line">%C    Shorthand for %l%h%p%r.</div><div class="line">%d    Local user&apos;s home directory.</div><div class="line">%h    The remote hostname.</div><div class="line">%i    The local user ID.</div><div class="line">%L    The local hostname.</div><div class="line">%l    The local hostname, including the domain name.</div><div class="line">%n    The original remote hostname, as given on the command line.</div><div class="line">%p    The remote port.</div><div class="line">%r    The remote username.</div><div class="line">%u    The local username.</div></pre></td></tr></table></figure></p>
+<ol>
+<li>Match exec accepts the tokens %%, %h, %L, %l, %n, %p, %r, and %u.</li>
+<li>CertificateFile accepts the tokens %%, %d, %h, %l, %r, and %u.</li>
+<li>ControlPath accepts the tokens %%, %C, %h, %i, %L, %l, %n, %p, %r, and %u.</li>
+<li>HostName accepts the tokens %% and %h.</li>
+<li>IdentityAgent and IdentityFile accept the tokens %%, %d, %h, %l, %r, and 1. %u.</li>
+<li>LocalCommand accepts the tokens %%, %C, %d, %h, %l, %n, %p, %r, and %u.</li>
+<li>ProxyCommand accepts the tokens %%, %h, %p, and %r.</li>
+<li>RemoteCommand accepts the tokens %%, %C, %d, %h, %l, %n, %p, %r, and %u.</li>
+</ol>
+<h3 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h3><ol>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-configure-custom-connection-options-for-your-ssh-client" target="_blank" rel="external">内容参考链接</a></li>
+<li>完整内容可使用如下命令查看：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; man ssh_config</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-phpmailer&amp;QQ" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/18/phpmailer&QQ/">PHPMailer使用qq邮箱</a>
+    </h1>
+  
+
+        <a href="/2017/12/18/phpmailer&QQ/" class="archive-article-date">
+  	<time datetime="2017-12-18T01:41:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-18</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>总结一下在PHPMailer中使用qq邮箱的设置问题。<br>在此之前，使用PHPMailer都是使用网易的163邮箱，一直没有什么问题。只要在网页端开启SMTP服务即可，配置信息如下，在加上自己的邮箱账号密码即可。</p>
+<ul>
+<li>Host : smtp.163.com </li>
+<li>Port : 25</li>
+</ul>
+<p>最近客户要求更换qq邮箱，本以为很简单的替换一下SMTP地址和账号密码即可</p>
+<ul>
+<li>Host : smtp.qq.com </li>
+<li>Port : 465(SSL)</li>
+</ul>
+<p>没有想到qq邮箱的配置和163邮箱还是有区别的。</p>
+<h2 id="SMTP-Error-Could-not-authenticate"><a href="#SMTP-Error-Could-not-authenticate" class="headerlink" title="SMTP Error: Could not authenticate"></a>SMTP Error: Could not authenticate</h2><p>这个错误表示你们的qq邮箱账户密码不正确。我的问题原因是，我的邮箱账号写成了登陆密码，正确的密码是开启STMP服务时给出的授权码，因为之前163邮箱我默认关闭了客户端授权码的。所以根本不知道这一点…惭愧。</p>
+<h2 id="PHPMailer发送成功，但实际邮件在草稿箱"><a href="#PHPMailer发送成功，但实际邮件在草稿箱" class="headerlink" title="PHPMailer发送成功，但实际邮件在草稿箱"></a>PHPMailer发送成功，但实际邮件在草稿箱</h2><p>我的代码正确运行结束，但邮件实际还在发件人邮箱的草稿箱里，google上也没有相关问题，我就又怀疑是自己的低级错误，果然因为的邮件正文，就是“测试”两个字，如果换成其他内容就可以正常发送了，因为QQ邮件服务器把这种内容归类为“垃圾邮件”。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/phpmailer/">phpmailer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/qq/">qq</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-docker-command" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/13/docker-command/">docker常用命令</a>
+    </h1>
+  
+
+        <a href="/2017/11/13/docker-command/" class="archive-article-date">
+  	<time datetime="2017-11-13T01:41:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+<table>
+    <tr>
+        <th>范围</th>
+        <th>命令</th>
+        <th>说明</th>
+        <th>常用参数</th>
+    </tr>
+    <tr>
+        <td rowspan="7">镜像</td>
+        <td>docker images</td>
+        <td>列出本地镜像</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker inspect</td>
+        <td>获取镜像元数据</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker build</td>
+        <td>构建镜像</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker tag</td>
+        <td>设置镜像标签(别名)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker history</td>
+        <td>查看指定镜像的创建历史</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker save/import </td>
+        <td>保存镜像到文件/从本地文件导入镜像</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker rmi</td>
+        <td>删除本地镜像</td>
+        <td><b>-f</b> :强制删除</td>
+    </tr>
+    <tr>
+        <td rowspan="6">容器</td>
+        <td>docker ps</td>
+        <td>列出容器</td>
+        <td><b>-a</b>:列出所有容器，包括未运行</td>
+    </tr>
+    <tr>
+        <td>docker create</td>
+        <td>创建容器</td>
+        <td>
+            <b>--name</b>:指定容器的名称<br>
+            <b>-p</b>:指定容器对外端口
+        </td>
+    </tr>
+    <tr>
+        <td>docker start/stop/restart</td>
+        <td>管理容器状态</td>
+        <td>
+            <b>-d,--detacg=true|false</b>:是否后台运行容器，默认为否
+        </td>
+    </tr>
+    <tr>
+        <td>docker run</td>
+        <td>创建一个新的容器并运行一个命令</td>
+        <td>
+            <b>-i</b>: 以交互模式运行容器，通常与 -t 同时使用；<br>
+            <b>-t</b>: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+        </td>
+    </tr>
+    <tr>
+        <td>docker rm</td>
+        <td>删除一个容器</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker exec</td>
+        <td>容器中执行命令</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker commit</td>
+        <td>提交对容器的修改</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan="3">仓库</td>
+        <td>docker search</td>
+        <td>搜索仓库镜像</td>
+        <td><b>-f</b> stars=100 :搜索100颗星以上的镜像<br>
+            --filter=stars=100
+        </td>
+    </tr>
+    <tr>
+        <td>docker pull/push</td>
+        <td>拉取/推送镜像到仓库</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker login</td>
+        <td>登陆仓库</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan="2">其他</td>
+        <td>docker version</td>
+        <td>显示版本信息</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker info</td>
+        <td>显示系统信息</td>
+        <td></td>
+    </tr>
+</table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-https" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/24/https/">Apache部署https的自签证书</a>
+    </h1>
+  
+
+        <a href="/2017/10/24/https/" class="archive-article-date">
+  	<time datetime="2017-10-24T06:25:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="WampServer-3-0-6-64bit-部署https问题"><a href="#WampServer-3-0-6-64bit-部署https问题" class="headerlink" title="WampServer(3.0.6 64bit) 部署https问题"></a>WampServer(3.0.6 64bit) 部署https问题</h3><ol>
+<li>Apache添加ssl_module后无法启动</li>
+</ol>
+<p>使用<code>httpd -t</code>命令测试配置文件，结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Cannot load modules/mod_ssl.so into server: The operating system cannot</div><div class="line">run %1.</div></pre></td></tr></table></figure></p>
+<p>原因是OpenSSL版本的问题，应该是我之前装过wmap 32bit版本的原因。到<a href="http://slproweb.com/products/Win32OpenSSL.html" target="_blank" rel="external">这里</a>下载合适的版本安装即可。我安装了<code>Win64 OpenSSL v1.0.2L Light</code>后就可以了。</p>
+<ol>
+<li>缺少<code>mod_socache_shmcb</code>模块<br>安装好openssl后apache依旧有错误<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SSLSessionCache: &apos;shmcb&apos; session cache not supported (known names: ). Maybe you need to load the appropriate socache module (mod_socache_shmcb?).</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>继续操作httpd.conf打开mod_socache_shmcb模块的注释。</p>
+<ol>
+<li><p>修改或者创建httpd-ssl.conf中的logs目录</p>
+</li>
+<li><p><a href="https://localhost" target="_blank" rel="external">https://localhost</a> 404错误<br>因为我的wamp设置了多个vhost，都只设置了<code>*:80</code>端口，而未设置https的443端口。在extra/httpd-vhost.conf配置文件中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># https</div><div class="line">&lt;VirtualHost *:443&gt;</div><div class="line">	ServerName localhost</div><div class="line">	DocumentRoot D:/wamp64/www</div><div class="line">	&lt;Directory  &quot;D:/wamp64/www/&quot;&gt;</div><div class="line">		Options +Indexes +Includes +FollowSymLinks +MultiViews</div><div class="line">		AllowOverride All</div><div class="line">		Require all granted</div><div class="line">	&lt;/Directory&gt;</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>此网站无法提供安全连接<br>继续修改httpd-vhost.conf配置文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;VirtualHost *:443&gt;</div><div class="line">	ServerName localhost</div><div class="line">	DocumentRoot D:/wamp64/www</div><div class="line">	&lt;Directory  &quot;D:/wamp64/www/&quot;&gt;</div><div class="line">		Options +Indexes +Includes +FollowSymLinks +MultiViews</div><div class="line">		AllowOverride All</div><div class="line">		Require all granted</div><div class="line">		# Require local</div><div class="line">	&lt;/Directory&gt;</div><div class="line">	SSLEngine on</div><div class="line">	SSLCertificateFile &quot;E:/libing/https/private/localhost.crt&quot;</div><div class="line">	SSLCertificateKeyFile &quot;E:/libing/https/private/private.key&quot;</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其实<code>extra/httpd-ssl.conf</code>就是以vhost的形式配置的，可以删除上面步骤4和5的过程，直接修改<code>extra/httpd-ssl.conf</code>中的<code>ServerName</code>和<code>DocumentRoot</code>即可解决上面的问题。<br>如果要在一个IP地址上部署多个SSL网站，可以设置多个不同的SSL端口或者多个网站和域名都使用同一个证书。这是因为SSL握手协议过程中,是通过IP+Port来进行通信，一个IP的一个端口只能返给客户一张SSL证书（即使有多张证书，也只能返回第一张，因为无法分辨用户会需要返回哪张证书）。</p>
+<h3 id="关于Let’s-Encrypt"><a href="#关于Let’s-Encrypt" class="headerlink" title="关于Let’s Encrypt"></a>关于Let’s Encrypt</h3><ol>
+<li>自动部署SSL</li>
+<li>自动续期（测试Synology） </li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://stackoverflow.com/questions/40017498/cannot-load-modules-mod-ssl-so-into-server" target="_blank" rel="external">Stackoverflow关于ssl_module的问题。</a></li>
+<li><a href="https://letsencrypt.org" target="_blank" rel="external">Let’s Encrypt</a></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Encrypt/">Encrypt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apache/">apache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-mysql-error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/30/mysql-error/">mysql-error</a>
+    </h1>
+  
+
+        <a href="/2017/08/30/mysql-error/" class="archive-article-date">
+  	<time datetime="2017-08-30T01:51:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-30</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> [PDOException]<br>  SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect date value: ‘0000-00-00’ for column ‘re_directorytime’ at row 1  </p>
+<p>   SET SESSION sql_mode=’ALLOW_INVALID_DATES’;</p>
+<p>   ALTER TABLE <code>culture</code>.<code>cu_immaterial</code><br>        CHANGE COLUMN <code>content</code> <code>content</code> MEDIUMTEXT NOT NULL ; </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-git-auto-deploy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -173,17 +643,32 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><h4 id="ssh免密码登录"><a href="#ssh免密码登录" class="headerlink" title="ssh免密码登录"></a>ssh免密码登录</h4><p>配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。</p>
-<h4 id="创建裸库"><a href="#创建裸库" class="headerlink" title="创建裸库"></a>创建裸库</h4><p>在服务器某目录(例：<code>/opt/git</code>)下执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt;git clone --bare git@xxxx.com:test.git</div></pre></td></tr></table></figure></p>
+        <h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><h4 id="ssh免密码登录"><a href="#ssh免密码登录" class="headerlink" title="ssh免密码登录"></a>ssh免密码登录</h4><p>配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。</p>
+<h4 id="创建裸库"><a href="#创建裸库" class="headerlink" title="创建裸库"></a>创建裸库</h4><p>在服务器某目录(例：<code>/opt/git</code>)下执行如下命令，生成裸代码仓库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt;git clone --bare git@xxxx.com:test.git</div></pre></td></tr></table></figure></p>
 <p>该命令从远程库拷贝一份裸库到本地。</p>
-<h4 id="编写服务端hooks"><a href="#编写服务端hooks" class="headerlink" title="编写服务端hooks"></a>编写服务端hooks</h4><p>进入到版本库的hooks目录下，创建<code>post-receive</code>文件，添加执行权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#&gt;cd test.git &amp;&amp; touch post-receive</div><div class="line">#&gt;chmod +x post-receive</div></pre></td></tr></table></figure></p>
+<p>或者使用–mirror参数，生成镜像代码仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt;git clone --mirror git@xxxx.com:test.git</div></pre></td></tr></table></figure></p>
+<p>镜像代码仓库也是裸代码仓库，它与裸代码仓库的区别在于：它不仅将源代码仓库的本地分支映射到目标代码仓库的本地分支，而且将所有引用（包括远程跟踪分支、备注等）都进行映射并建立refspec配置以使目标代码仓库的所有引用可被git remote update命令覆盖。</p>
+<h4 id="编写服务端hooks"><a href="#编写服务端hooks" class="headerlink" title="编写服务端hooks"></a>编写服务端hooks</h4><p>进入到版本库的hooks目录下，创建<code>post-receive</code>文件，添加执行权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#&gt;cd test.git/hooks &amp;&amp; touch post-receive</div><div class="line">#&gt;chmod +x post-receive</div></pre></td></tr></table></figure></p>
 <p>接下来就是编辑你自己的<code>post-receive</code>文件内容了，也就是自动化部署的过程脚本，我的一个tp5的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">WORK_TREE=/usr/share/nginx/html</div><div class="line">echo $&#123;WORK_TREE&#125;</div><div class="line">git --work-tree=$&#123;WORK_TREE&#125; checkout  develop --force </div><div class="line">cd $&#123;WORK_TREE&#125; &amp;&amp; php think migrate:run</div></pre></td></tr></table></figure></p>
+<p>另一个例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">//给ECHO输出添加颜色</div><div class="line">echo -e &quot;\033[36m--------------Start Deploy--------------\033[0m&quot;</div><div class="line">WWW_DIR=&quot;/home/nginx/www-culture-mirror&quot;</div><div class="line">//目录不存在或无权限则退出脚本</div><div class="line">cd $WWW_DIR ||exit</div><div class="line">pwd</div><div class="line">echo $GIT_DIR</div><div class="line">//取消GIT_DIR变量，否则会出现错误：“fatal: not a git repository: &apos;.&apos;”</div><div class="line">unset GIT_DIR</div><div class="line">git pull origin develop</div><div class="line">echo -e &quot;\033[33m--------------Start Migrate ------------\033[0m&quot;</div><div class="line">./vendor/davedevelopment/phpmig/bin/phpmig migrate</div><div class="line">echo -e &quot;\033[36m--------------End Success---------------\033[0m&quot;</div></pre></td></tr></table></figure></p>
+<h4 id="忽略线上或生产环境的配置文件"><a href="#忽略线上或生产环境的配置文件" class="headerlink" title="忽略线上或生产环境的配置文件"></a>忽略线上或生产环境的配置文件</h4><ol>
+<li>首先正确修改你的项目中的配置文件。</li>
+<li>使用如下命令来告诉git暂时忽略该配置文件的修改：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git update-index --assume-unchanged config.file</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果想反悔则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git update-index --no-assume-unchanged config.file</div></pre></td></tr></table></figure></p>
+<p>这样该文件就不会出现在<code>git status</code>中</p>
+<ol>
+<li>如果修改的配置文件较多，可以用<code>git ls-files</code>命令查询那些被<code>--assums-unchanged</code>忽略的文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git ls-files -v |grep &apos;^h\+&apos;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>详情参考<a href="https://git-scm.com/docs/git-ls-files/" target="_blank" rel="external">git-ls-files文档</a></p>
 <h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><h4 id="配置远程git库信息"><a href="#配置远程git库信息" class="headerlink" title="配置远程git库信息"></a>配置远程git库信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git remote add serverAlias sshUser@50.40.30.20:/opt/git/test.git</div></pre></td></tr></table></figure>
-<h4 id="推送至远程服务器"><a href="#推送至远程服务器" class="headerlink" title="推送至远程服务器"></a>推送至远程服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git push serverAlias develop</div></pre></td></tr></table></figure>
+<h4 id="推送至远程服务器"><a href="#推送至远程服务器" class="headerlink" title="推送至远程服务器"></a>推送至远程服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git push serverAlias develop</div></pre></td></tr></table></figure>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
 <li>学历ssh config的配置方式和详细配置</li>
-<li>git参数<code>--bare</code>、<code>--work-tree</code>的理解</li>
-<li>git hooks脚本的类型和使用情景</li>
+<li>git参数<code>--bare</code>、<code>--work-tree</code>的理解</li>
+<li>git hooks脚本的类型和使用情景</li>
 </ul>
 
       
@@ -195,7 +680,7 @@ ga('send', 'pageview');
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deploy/">deploy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hooks/">hooks</a></li></ul>
 	</div>
 
       
@@ -456,299 +941,9 @@ fwrite($socket_handle,&apos;\r\n&apos;);
 
 
   
-    <article id="post-BOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/BOM/">PHP中的BOM问题</a>
-    </h1>
-  
-
-        <a href="/2017/01/11/BOM/" class="archive-article-date">
-  	<time datetime="2017-01-11T00:46:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-11</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;最近在写html时，发现某个页面的顶部总是有一行内容为<code>&amp;#65279;</code>的空白，导致顶部留下空行，原来发现是windows环境下的BOM导致的。用非记事本的高级编辑器修改下编码，重新保持即可解决问题。<br>&#160; &#160; &#160; &#160;简单来说就是在用类似windows自带的记事本等软件时，在保存一个以UTF-8编码的文件时，会在文件开始的地方插入三个不可见的字符（0xEF 0xBB 0xBF，即BOM），用来表示这个文件的编码格式，但是偏偏php不会自动忽略BOM，所以才会造成页面的 top padding 设置为0，也无法让整个网页紧贴浏览器顶部。</p>
-<hr>
-<p>&#160; &#160; &#160; &#160;无独有偶，昨天在做微信开发接入测试的验证服务器有效性时，总是验证失败，提示<code>token check faild</code>，调试发现是我的接口返回值的头部有一行空白，第一反应就是“这不是BOM么”，立马把所有的文件格式重新用UTF-8 without BOM格式保存了一边,发现问题没有解决…后来才发现，是在工程的配置文件(config.php)的开头有一个换行符：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">换行符</div><div class="line"><span class="meta">&lt;?php</span></div><div class="line">....</div></pre></td></tr></table></figure></p>
-<p>我对php也真是醉了，不愧是最好的语言…</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/utf8/">utf8</a></li></ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-svn-hook-script" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/20/svn-hook-script/">svn中使用hook script</a>
-    </h1>
-  
-
-        <a href="/2016/12/20/svn-hook-script/" class="archive-article-date">
-  	<time datetime="2016-12-20T08:08:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-20</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="svn与git"><a href="#svn与git" class="headerlink" title="svn与git"></a>svn与git</h3><p>最近又回归到使用svn做版本控制，其实svn在权限控制和安全控制方面还是比git有优势的，而且git的学习成本有点高，很难快速上手。相比来说svn有良好的GUI，适合团队管理，而git更适合做纯代码管理。</p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>以前使用git时，git有各种hook脚本，在实际生产中非常有用，比如自动推送线上代码的webhooks，再比如每次git pull后自动执行数据库迁移程序来同步数据库更新内容。<br>最近发现svn也有hook script的功能，可以与git的hook功能完成相同的任务。</p>
-<h3 id="设置本地Hook"><a href="#设置本地Hook" class="headerlink" title="设置本地Hook"></a>设置本地Hook</h3><p>添加hook脚本：<br>空白位置鼠标右键-&gt;TortoiseSVN-&gt;setting-&gt;Hook Script-&gt;add<br><img src="http://ww3.sinaimg.cn/large/77e84037jw1faxcv0p9qqj20li0huwic.jpg" alt="setting"><br>其中的Hook Type大概有以下几种:</p>
-<ul>
-<li>start-commit 它在提交事务产生前已运行，通常用来判定一个用户是否有权提交。</li>
-<li>pre-commit   在事务完成提交之前运行。</li>
-<li>post-commit  它在事务完成后运行。大多数人用这个钩子来发送关于提交的描述性电子邮件，或者作为版本库的备份。</li>
-<li>post-update  它在update操作完成后运行。我用这个执行迁移脚本。<br>…</li>
-</ul>
-<h3 id="我的hook-script"><a href="#我的hook-script" class="headerlink" title="我的hook script"></a>我的hook script</h3><pre><code>cd /d %~dp0  
-cd ..
-php think migrate:run
-</code></pre><p>该文件保存为post-update-hook.bat</p>
-<ul>
-<li><code>cd /d %~dp0</code>   执行结果：切换至脚本所在目录<ul>
-<li><code>/d</code>   切换目录的同时切换盘符</li>
-<li><code>%0</code>   代表批处理本身</li>
-<li><code>%~d0</code> 将 %0 扩充到一个驱动器号</li>
-<li><code>%~p0</code> 将 %0 扩充到一个路径</li>
-</ul>
-</li>
-<li><code>php think migrate:run</code> tp5的数据库迁移命令</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hooks/">hooks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svn/">svn</a></li></ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-linuxa常用命令小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/07/linuxa常用命令小结/">linux常用命令小结</a>
-    </h1>
-  
-
-        <a href="/2016/12/07/linuxa常用命令小结/" class="archive-article-date">
-  	<time datetime="2016-12-07T08:26:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-07</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="日常工作中常用命令和工具的记录"><a href="#日常工作中常用命令和工具的记录" class="headerlink" title="日常工作中常用命令和工具的记录"></a>日常工作中常用命令和工具的记录</h3>
-<table>
-<thead><tr><th>命令</th><th>简介</th><th>备注</th></tr></thead>
-<tbody>
-<tr><td>`nload`</td>
-<td>根据系统网络设备统计流量数据，只能统计网络设备的总流量</td><td>非自带，需安装</td>
-</tr>
-<tr><td>`nethogs`</td>
-<td>用来按进程或程序实时统计网络带宽使用率</td>
-<td>非自带，需安装</td>
-</tr>
-</tbody>
-</table>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-what-s-for-new" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/20/what-s-for-new/">what&#39;s for new?</a>
-    </h1>
-  
-
-        <a href="/2016/11/20/what-s-for-new/" class="archive-article-date">
-  	<time datetime="2016-11-20T04:57:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-20</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>世界上只有两种编程语言：一种是天天被人喷的，另一种是没人用的。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/others/">others</a></li></ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-this-is-War" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/10/this-is-War/">This&#39;s War!</a>
-    </h1>
-  
-
-        <a href="/2016/11/10/this-is-War/" class="archive-article-date">
-  	<time datetime="2016-11-10T08:52:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-10</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/69d909a5gw1f7qxqhhj2yg20a305o4r1.gif" alt="这就是你们想要的战争！" title="Optional title"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/photo/">photo</a></li></ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -760,7 +955,7 @@ php think migrate:run
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 makeup1122
+    		&copy; 2018 makeup1122
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -804,11 +999,15 @@ php think migrate:run
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">utf8</a>
+                <a href="javascript:void(0)">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">php</a>
+                <a href="javascript:void(0)">jade</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -820,7 +1019,11 @@ php think migrate:run
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">git</a>
+                <a href="javascript:void(0)">utf8</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">php</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -836,6 +1039,18 @@ php think migrate:run
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">deploy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">hexo</a>
               </li>
              
@@ -845,6 +1060,22 @@ php think migrate:run
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">phpmailer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">qq</a>
               </li>
              
               <li class="article-tag-list-item">

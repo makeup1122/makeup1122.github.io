@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://makeup1122.github.io">
   <title>git自动部署实践 | makeup1122</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="服务端配置ssh免密码登录配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。 创建裸库在服务器某目录(例：/opt/git)下执行：1#&amp;gt;git clone --bare git@xxxx.com:test.git 该命令从远程库拷贝一份裸库到本地。 编写服务端hooks进入到版本库的hooks目录下，创建post-receive文件，添加执行权限：12">
-<meta name="keywords" content="git">
+  <meta name="description" content="服务端配置ssh免密码登录配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。 创建裸库在服务器某目录(例：/opt/git)下执行如下命令，生成裸代码仓库：1#&amp;gt;git clone --bare git@xxxx.com:test.git 该命令从远程库拷贝一份裸库到本地。 或者使用–mirror参数，生成镜像代码仓库1#&amp;gt;git clone --mirror gi">
+<meta name="keywords" content="hooks,git,deploy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git自动部署实践">
 <meta property="og:url" content="http://makeup1122.github.io/2017/07/28/git-auto-deploy/index.html">
 <meta property="og:site_name" content="makeup1122">
-<meta property="og:description" content="服务端配置ssh免密码登录配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。 创建裸库在服务器某目录(例：/opt/git)下执行：1#&amp;gt;git clone --bare git@xxxx.com:test.git 该命令从远程库拷贝一份裸库到本地。 编写服务端hooks进入到版本库的hooks目录下，创建post-receive文件，添加执行权限：12">
+<meta property="og:description" content="服务端配置ssh免密码登录配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。 创建裸库在服务器某目录(例：/opt/git)下执行如下命令，生成裸代码仓库：1#&amp;gt;git clone --bare git@xxxx.com:test.git 该命令从远程库拷贝一份裸库到本地。 或者使用–mirror参数，生成镜像代码仓库1#&amp;gt;git clone --mirror gi">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-07-28T15:53:43.000Z">
+<meta property="og:updated_time" content="2017-12-01T14:49:23.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git自动部署实践">
-<meta name="twitter:description" content="服务端配置ssh免密码登录配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。 创建裸库在服务器某目录(例：/opt/git)下执行：1#&amp;gt;git clone --bare git@xxxx.com:test.git 该命令从远程库拷贝一份裸库到本地。 编写服务端hooks进入到版本库的hooks目录下，创建post-receive文件，添加执行权限：12">
+<meta name="twitter:description" content="服务端配置ssh免密码登录配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。 创建裸库在服务器某目录(例：/opt/git)下执行如下命令，生成裸代码仓库：1#&amp;gt;git clone --bare git@xxxx.com:test.git 该命令从远程库拷贝一份裸库到本地。 或者使用–mirror参数，生成镜像代码仓库1#&amp;gt;git clone --mirror gi">
   
     <link rel="alternative" href="/atom.xml" title="makeup1122" type="application/atom+xml">
   
@@ -176,17 +176,32 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><h4 id="ssh免密码登录"><a href="#ssh免密码登录" class="headerlink" title="ssh免密码登录"></a>ssh免密码登录</h4><p>配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。</p>
-<h4 id="创建裸库"><a href="#创建裸库" class="headerlink" title="创建裸库"></a>创建裸库</h4><p>在服务器某目录(例：<code>/opt/git</code>)下执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt;git clone --bare git@xxxx.com:test.git</div></pre></td></tr></table></figure></p>
+        <h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><h4 id="ssh免密码登录"><a href="#ssh免密码登录" class="headerlink" title="ssh免密码登录"></a>ssh免密码登录</h4><p>配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。</p>
+<h4 id="创建裸库"><a href="#创建裸库" class="headerlink" title="创建裸库"></a>创建裸库</h4><p>在服务器某目录(例：<code>/opt/git</code>)下执行如下命令，生成裸代码仓库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt;git clone --bare git@xxxx.com:test.git</div></pre></td></tr></table></figure></p>
 <p>该命令从远程库拷贝一份裸库到本地。</p>
-<h4 id="编写服务端hooks"><a href="#编写服务端hooks" class="headerlink" title="编写服务端hooks"></a>编写服务端hooks</h4><p>进入到版本库的hooks目录下，创建<code>post-receive</code>文件，添加执行权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#&gt;cd test.git &amp;&amp; touch post-receive</div><div class="line">#&gt;chmod +x post-receive</div></pre></td></tr></table></figure></p>
+<p>或者使用–mirror参数，生成镜像代码仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt;git clone --mirror git@xxxx.com:test.git</div></pre></td></tr></table></figure></p>
+<p>镜像代码仓库也是裸代码仓库，它与裸代码仓库的区别在于：它不仅将源代码仓库的本地分支映射到目标代码仓库的本地分支，而且将所有引用（包括远程跟踪分支、备注等）都进行映射并建立refspec配置以使目标代码仓库的所有引用可被git remote update命令覆盖。</p>
+<h4 id="编写服务端hooks"><a href="#编写服务端hooks" class="headerlink" title="编写服务端hooks"></a>编写服务端hooks</h4><p>进入到版本库的hooks目录下，创建<code>post-receive</code>文件，添加执行权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#&gt;cd test.git/hooks &amp;&amp; touch post-receive</div><div class="line">#&gt;chmod +x post-receive</div></pre></td></tr></table></figure></p>
 <p>接下来就是编辑你自己的<code>post-receive</code>文件内容了，也就是自动化部署的过程脚本，我的一个tp5的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">WORK_TREE=/usr/share/nginx/html</div><div class="line">echo $&#123;WORK_TREE&#125;</div><div class="line">git --work-tree=$&#123;WORK_TREE&#125; checkout  develop --force </div><div class="line">cd $&#123;WORK_TREE&#125; &amp;&amp; php think migrate:run</div></pre></td></tr></table></figure></p>
+<p>另一个例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">//给ECHO输出添加颜色</div><div class="line">echo -e &quot;\033[36m--------------Start Deploy--------------\033[0m&quot;</div><div class="line">WWW_DIR=&quot;/home/nginx/www-culture-mirror&quot;</div><div class="line">//目录不存在或无权限则退出脚本</div><div class="line">cd $WWW_DIR ||exit</div><div class="line">pwd</div><div class="line">echo $GIT_DIR</div><div class="line">//取消GIT_DIR变量，否则会出现错误：“fatal: not a git repository: &apos;.&apos;”</div><div class="line">unset GIT_DIR</div><div class="line">git pull origin develop</div><div class="line">echo -e &quot;\033[33m--------------Start Migrate ------------\033[0m&quot;</div><div class="line">./vendor/davedevelopment/phpmig/bin/phpmig migrate</div><div class="line">echo -e &quot;\033[36m--------------End Success---------------\033[0m&quot;</div></pre></td></tr></table></figure></p>
+<h4 id="忽略线上或生产环境的配置文件"><a href="#忽略线上或生产环境的配置文件" class="headerlink" title="忽略线上或生产环境的配置文件"></a>忽略线上或生产环境的配置文件</h4><ol>
+<li>首先正确修改你的项目中的配置文件。</li>
+<li>使用如下命令来告诉git暂时忽略该配置文件的修改：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git update-index --assume-unchanged config.file</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果想反悔则：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git update-index --no-assume-unchanged config.file</div></pre></td></tr></table></figure></p>
+<p>这样该文件就不会出现在<code>git status</code>中</p>
+<ol>
+<li>如果修改的配置文件较多，可以用<code>git ls-files</code>命令查询那些被<code>--assums-unchanged</code>忽略的文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git ls-files -v |grep &apos;^h\+&apos;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>详情参考<a href="https://git-scm.com/docs/git-ls-files/" target="_blank" rel="external">git-ls-files文档</a></p>
 <h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><h4 id="配置远程git库信息"><a href="#配置远程git库信息" class="headerlink" title="配置远程git库信息"></a>配置远程git库信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git remote add serverAlias sshUser@50.40.30.20:/opt/git/test.git</div></pre></td></tr></table></figure>
-<h4 id="推送至远程服务器"><a href="#推送至远程服务器" class="headerlink" title="推送至远程服务器"></a>推送至远程服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git push serverAlias develop</div></pre></td></tr></table></figure>
+<h4 id="推送至远程服务器"><a href="#推送至远程服务器" class="headerlink" title="推送至远程服务器"></a>推送至远程服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git push serverAlias develop</div></pre></td></tr></table></figure>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
 <li>学历ssh config的配置方式和详细配置</li>
-<li>git参数<code>--bare</code>、<code>--work-tree</code>的理解</li>
-<li>git hooks脚本的类型和使用情景</li>
+<li>git参数<code>--bare</code>、<code>--work-tree</code>的理解</li>
+<li>git hooks脚本的类型和使用情景</li>
 </ul>
 
       
@@ -198,7 +213,7 @@ ga('send', 'pageview');
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deploy/">deploy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hooks/">hooks</a></li></ul>
 	</div>
 
       
@@ -265,6 +280,15 @@ ga('send', 'pageview');
   
 <nav id="article-nav">
   
+    <a href="/2017/08/30/mysql-error/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          mysql-error
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/07/10/nginx-ueditor-issue/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Nginx问题记录</div>
@@ -308,7 +332,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 makeup1122
+    		&copy; 2018 makeup1122
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -352,11 +376,15 @@ ga('send', 'pageview');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">utf8</a>
+                <a href="javascript:void(0)">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">php</a>
+                <a href="javascript:void(0)">jade</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -368,7 +396,11 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">git</a>
+                <a href="javascript:void(0)">utf8</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">php</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -384,6 +416,18 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">deploy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">hexo</a>
               </li>
              
@@ -393,6 +437,22 @@ ga('send', 'pageview');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">phpmailer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">qq</a>
               </li>
              
               <li class="article-tag-list-item">
