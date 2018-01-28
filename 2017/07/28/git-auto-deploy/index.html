@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="makeup1122">
 <meta property="og:description" content="服务端配置ssh免密码登录配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。 创建裸库在服务器某目录(例：/opt/git)下执行如下命令，生成裸代码仓库：1#&amp;gt;git clone --bare git@xxxx.com:test.git 该命令从远程库拷贝一份裸库到本地。 或者使用–mirror参数，生成镜像代码仓库1#&amp;gt;git clone --mirror gi">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-12-01T14:49:23.492Z">
+<meta property="og:updated_time" content="2018-01-24T15:38:47.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git自动部署实践">
 <meta name="twitter:description" content="服务端配置ssh免密码登录配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。 创建裸库在服务器某目录(例：/opt/git)下执行如下命令，生成裸代码仓库：1#&amp;gt;git clone --bare git@xxxx.com:test.git 该命令从远程库拷贝一份裸库到本地。 或者使用–mirror参数，生成镜像代码仓库1#&amp;gt;git clone --mirror gi">
@@ -199,7 +199,7 @@ ga('send', 'pageview');
 <h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><h4 id="配置远程git库信息"><a href="#配置远程git库信息" class="headerlink" title="配置远程git库信息"></a>配置远程git库信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git remote add serverAlias sshUser@50.40.30.20:/opt/git/test.git</div></pre></td></tr></table></figure>
 <h4 id="推送至远程服务器"><a href="#推送至远程服务器" class="headerlink" title="推送至远程服务器"></a>推送至远程服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; git push serverAlias develop</div></pre></td></tr></table></figure>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li>学历ssh config的配置方式和详细配置</li>
+<li>学习ssh config的配置方式和详细配置</li>
 <li>git参数<code>--bare</code>、<code>--work-tree</code>的理解</li>
 <li>git hooks脚本的类型和使用情景</li>
 </ul>
@@ -302,26 +302,6 @@ ga('send', 'pageview');
 
 
 
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="git-auto-deploy" data-title="git自动部署实践" data-url="http://makeup1122.github.io/2017/07/28/git-auto-deploy/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"makeup1122"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
 
 
 
@@ -376,6 +356,14 @@ ga('send', 'pageview');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">shadowsocks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">mysql</a>
               </li>
              
@@ -388,14 +376,6 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">hooks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">utf8</a>
               </li>
              
@@ -404,7 +384,19 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">ssh</a>
+                <a href="javascript:void(0)">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">deploy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -416,15 +408,7 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">deploy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,14 +432,6 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">phpmailer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">qq</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">nginx</a>
               </li>
              
@@ -464,15 +440,23 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">phpmailer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">qq</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">photo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">tmux</a>
+                <a href="javascript:void(0)">others</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">others</a>
+                <a href="javascript:void(0)">tmux</a>
               </li>
             
             <div class="clearfix"></div>
