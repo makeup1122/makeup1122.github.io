@@ -9,7 +9,7 @@
   <title>windows下的Git Hooks执行错误 | makeup1122</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="问题windows系统下git(mingw)的hooks脚本不执行，返回如下错误1error: cannot spawn .git/hooks/post-merge: No error 原因git hooks在windows环境中不像SVN hooks会自动寻找xxxx.bat类的Hook文件来执行，所以必须指定shebang来载入脚本解释器。 解决在hook脚本首行插入shebang，如下：12">
-<meta name="keywords" content="hooks,git">
+<meta name="keywords" content="git,hooks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows下的Git Hooks执行错误">
 <meta property="og:url" content="http://makeup1122.github.io/2018/07/24/git-hook-error/index.html">
@@ -344,6 +344,10 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">ssh</a>
               </li>
              
@@ -352,23 +356,11 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">utf8</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">hooks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -389,6 +381,14 @@ ga('send', 'pageview');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">deploy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">svn</a>
               </li>
              
               <li class="article-tag-list-item">
