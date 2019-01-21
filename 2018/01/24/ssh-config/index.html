@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://makeup1122.github.io">
   <title>使用ssh config配置文件 | makeup1122</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ssh的config配置参数说明位置 ～/.ssh/config 用户配置文件。 /etc/ssh/ssh_config 系统配置文件。  ssh读取配置文件的优先级为：  命令行参数。 用户配置文件(~/.ssh/config)。 系统配置文件(/etc/ssh/ssh_config)。一般格式123456789101112Host *    	ControlMaster auto    	C">
+  <meta name="description" content="ssh的config配置参数说明位置 ～/.ssh/config 用户配置文件。 /etc/ssh/ssh_config 系统配置文件。  ssh读取配置文件的优先级为：  命令行参数。 用户配置文件(~/.ssh/config)。 系统配置文件(/etc/ssh/ssh_config)。一般格式123456789101112Host *    	ControlMaster auto    	Co">
 <meta name="keywords" content="ssh,linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用ssh config配置文件">
 <meta property="og:url" content="http://makeup1122.github.io/2018/01/24/ssh-config/index.html">
 <meta property="og:site_name" content="makeup1122">
-<meta property="og:description" content="ssh的config配置参数说明位置 ～/.ssh/config 用户配置文件。 /etc/ssh/ssh_config 系统配置文件。  ssh读取配置文件的优先级为：  命令行参数。 用户配置文件(~/.ssh/config)。 系统配置文件(/etc/ssh/ssh_config)。一般格式123456789101112Host *    	ControlMaster auto    	C">
+<meta property="og:description" content="ssh的config配置参数说明位置 ～/.ssh/config 用户配置文件。 /etc/ssh/ssh_config 系统配置文件。  ssh读取配置文件的优先级为：  命令行参数。 用户配置文件(~/.ssh/config)。 系统配置文件(/etc/ssh/ssh_config)。一般格式123456789101112Host *    	ControlMaster auto    	Co">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2018-01-24T15:28:47.381Z">
+<meta property="og:updated_time" content="2018-05-07T10:13:24.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用ssh config配置文件">
-<meta name="twitter:description" content="ssh的config配置参数说明位置 ～/.ssh/config 用户配置文件。 /etc/ssh/ssh_config 系统配置文件。  ssh读取配置文件的优先级为：  命令行参数。 用户配置文件(~/.ssh/config)。 系统配置文件(/etc/ssh/ssh_config)。一般格式123456789101112Host *    	ControlMaster auto    	C">
+<meta name="twitter:description" content="ssh的config配置参数说明位置 ～/.ssh/config 用户配置文件。 /etc/ssh/ssh_config 系统配置文件。  ssh读取配置文件的优先级为：  命令行参数。 用户配置文件(~/.ssh/config)。 系统配置文件(/etc/ssh/ssh_config)。一般格式123456789101112Host *    	ControlMaster auto    	Co">
   
     <link rel="alternative" href="/atom.xml" title="makeup1122" type="application/atom+xml">
   
@@ -182,48 +182,48 @@ ga('send', 'pageview');
 </ul>
 <p>ssh读取配置文件的优先级为：</p>
 <ol>
-<li>命令行参数。</li>
+<li>命令行参数。</li>
 <li>用户配置文件(~/.ssh/config)。</li>
 <li>系统配置文件(/etc/ssh/ssh_config)。<h3 id="一般格式"><a href="#一般格式" class="headerlink" title="一般格式"></a>一般格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Host *</div><div class="line">    	ControlMaster auto</div><div class="line">    	ControlPath ~/.ssh/%h-%p-%r</div><div class="line">    	ControlPersist yes</div><div class="line">Host server-alias</div><div class="line">    	HostName        129.12.12.122</div><div class="line">    	Port            22</div><div class="line">    	User            root</div><div class="line">        IdentityFile    ~/mykey/SSH/id_rsa</div><div class="line">Host text.com</div><div class="line">	    Port	22222</div><div class="line">	    User	text</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><h5 id="普通参数"><a href="#普通参数" class="headerlink" title="普通参数"></a>普通参数</h5><ul>
 <li>Host ：描述参数的作用范围。</li>
-<li>HostName ：ip或域名。当Host参数已经指明时可以不用指定该参数。</li>
-<li>User ：用户名。</li>
-<li>Port ：ssh端口号，默认22。</li>
+<li>HostName ：ip或域名。当Host参数已经指明时可以不用指定该参数。</li>
+<li>User ：用户名。</li>
+<li>Port ：ssh端口号，默认22。</li>
 </ul>
 <h5 id="连接参数"><a href="#连接参数" class="headerlink" title="连接参数"></a>连接参数</h5><ul>
 <li>ServerAliveInterval ：发送心跳包到服务器的时间间隔(秒)。当ssh连接不稳定或不可靠时，你希望知道链接是否可用。</li>
 <li>LogLevel ：客户端记录日志的级别。对无需记录日志或者调试ssh链接时非常有用，可选参数从无到繁分别是：<code>QUIET, FATAL, ERROR, INFO, VERBOSE, DEBUG1, DEBUG2, and DEBUG3</code>。</li>
-<li>StrictHostKeyChecking ：是否自动校验服务端的host key并写入know_hosts。默认是询问(<code>ask</code>)，设置为<code>no</code>则会自动写入，当你需要链接大量服务器端时很有用，但也会产生安全问题，所以请谨慎使用。</li>
-<li>UserKnownHostsFile ：know_hosts的存放位置。一般无需单独配置该项，当<code>StrictHostKeyChecking</code>设置为’no’时，可以设置为<code>/dev/null</code>。</li>
-<li>VisualHostKey ：设置为<code>yes</code>可以告诉服务端以ASCII的格式返回服务器host key。我不知道有啥用，那个ASCII图不太能看懂。</li>
-<li>Compression ：开启数据压缩。当你的链接很慢或者需要scp时会很有用，一般用户无需这个参数。</li>
+<li>StrictHostKeyChecking ：是否自动校验服务端的host key并写入know_hosts。默认是询问(<code>ask</code>)，设置为<code>no</code>则会自动写入，当你需要链接大量服务器端时很有用，但也会产生安全问题，所以请谨慎使用。</li>
+<li>UserKnownHostsFile ：know_hosts的存放位置。一般无需单独配置该项，当<code>StrictHostKeyChecking</code>设置为’no’时，可以设置为<code>/dev/null</code>。</li>
+<li>VisualHostKey ：设置为<code>yes</code>可以告诉服务端以ASCII的格式返回服务器host key。我不知道有啥用，那个ASCII图不太能看懂。</li>
+<li>Compression ：开启数据压缩。当你的链接很慢或者需要scp时会很有用，一般用户无需这个参数。</li>
 <li>ConnectTimeout ：设置超时时间来覆盖系统默认的TCP连接超时时间。</li>
 </ul>
-<h5 id="转发参数"><a href="#转发参数" class="headerlink" title="转发参数"></a>转发参数</h5><p>略</p>
+<h5 id="转发参数"><a href="#转发参数" class="headerlink" title="转发参数"></a>转发参数</h5><p>略</p>
 <h5 id="关于key的参数"><a href="#关于key的参数" class="headerlink" title="关于key的参数"></a>关于key的参数</h5><ul>
-<li>IdentityFile ：为每个链接指定私钥文件的位置。当你的私钥文件不在默认位置(比如<code>~/.ssh/id_rsa</code>)或者你有多个不同功能的私钥文件时会很有用。</li>
-<li>IdentitiesOnly ：强制使用config文件内配置的某一私钥文件。当你有2个以上的私钥文件可用时会用到这个参数。</li>
+<li>IdentityFile ：为每个链接指定私钥文件的位置。当你的私钥文件不在默认位置(比如<code>~/.ssh/id_rsa</code>)或者你有多个不同功能的私钥文件时会很有用。</li>
+<li>IdentitiesOnly ：强制使用config文件内配置的某一私钥文件。当你有2个以上的私钥文件可用时会用到这个参数。</li>
 <li>IdentityAgent ：Specifies the UNIX-domain socket used to communicate with the authentication agent.</li>
 </ul>
 <h5 id="多路复用单个TCP链接"><a href="#多路复用单个TCP链接" class="headerlink" title="多路复用单个TCP链接"></a>多路复用单个TCP链接</h5><p>这个很有用，可以大幅提升ssh连接速度。</p>
 <ul>
 <li>ControlMaster ：当多路复用可用时是否开启。设置为<code>auto</code>即可启用。</li>
-<li>ControlPath ：设置socket文件的位置和文件名格式，比如可以设置为<code>~/.ssh/%h-%p-%r</code>。参考TOKEN的内容。</li>
-<li>ControlPersist ：复用链接的持续时间。可设置位为整数(秒)、<code>4h</code>(小时)、<code>yes</code>(长时间)等。</li>
+<li>ControlPath ：设置socket文件的位置和文件名格式，比如可以设置为<code>~/.ssh/%h-%p-%r</code>。参考TOKEN的内容。</li>
+<li>ControlPersist ：复用链接的持续时间。可设置位为整数(秒)、<code>4h</code>(小时)、<code>yes</code>(长时间)等。</li>
 </ul>
 <h5 id="权限认证"><a href="#权限认证" class="headerlink" title="权限认证"></a>权限认证</h5><ul>
 <li>PasswordAuthentication ：设置是否开启密码认证。可选参数只能为<code>yes</code>或者<code>no</code>(默认为no)。</li>
 <li>PubkeyAuthentication：设置是否开启密钥认证。可选参数只能为<code>yes</code>或者<code>no</code>(默认为yes)。</li>
 </ul>
 <h5 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h5><ul>
-<li>LocalCommand ：连接服务器成功时在本地执行的命令。除非启用下面的PermitLocalCommand，否则该参数会被直接忽略。</li>
+<li>LocalCommand ：连接服务器成功时在本地执行的命令。除非启用下面的PermitLocalCommand，否则该参数会被直接忽略。</li>
 <li>PermitLocalCommand ：运行本地执行命令。</li>
-<li>RemoteCommand ：连接服务器成功时在服务器端执行的命令。比如启动<code>tmux</code>。</li>
+<li>RemoteCommand ：连接服务器成功时在服务器端执行的命令。比如启动<code>tmux</code>。</li>
 </ul>
-<h3 id="TOKEN"><a href="#TOKEN" class="headerlink" title="TOKEN"></a>TOKEN</h3><p>Arguments to some keywords can make use of tokens, which are expanded at runtime:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">%%    A literal `%&apos;.</div><div class="line">%C    Shorthand for %l%h%p%r.</div><div class="line">%d    Local user&apos;s home directory.</div><div class="line">%h    The remote hostname.</div><div class="line">%i    The local user ID.</div><div class="line">%L    The local hostname.</div><div class="line">%l    The local hostname, including the domain name.</div><div class="line">%n    The original remote hostname, as given on the command line.</div><div class="line">%p    The remote port.</div><div class="line">%r    The remote username.</div><div class="line">%u    The local username.</div></pre></td></tr></table></figure></p>
+<h3 id="TOKEN"><a href="#TOKEN" class="headerlink" title="TOKEN"></a>TOKEN</h3><p>Arguments to some keywords can make use of tokens, which are expanded at runtime:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">%%    A literal `%&apos;.</div><div class="line">%C    Shorthand for %l%h%p%r.</div><div class="line">%d    Local user&apos;s home directory.</div><div class="line">%h    The remote hostname.</div><div class="line">%i    The local user ID.</div><div class="line">%L    The local hostname.</div><div class="line">%l    The local hostname, including the domain name.</div><div class="line">%n    The original remote hostname, as given on the command line.</div><div class="line">%p    The remote port.</div><div class="line">%r    The remote username.</div><div class="line">%u    The local username.</div></pre></td></tr></table></figure></p>
 <ol>
 <li>Match exec accepts the tokens %%, %h, %L, %l, %n, %p, %r, and %u.</li>
 <li>CertificateFile accepts the tokens %%, %d, %h, %l, %r, and %u.</li>
@@ -315,6 +315,15 @@ ga('send', 'pageview');
   
 <nav id="article-nav">
   
+    <a href="/2018/01/31/update-linux-version/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          升级CentOS7的Linux版本至最新稳定版
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/12/18/phpmailer&QQ/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">PHPMailer使用qq邮箱</div>
@@ -338,7 +347,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 makeup1122
+    		&copy; 2019 makeup1122
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -382,6 +391,14 @@ ga('send', 'pageview');
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">jade</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">ssh</a>
               </li>
              
@@ -391,14 +408,6 @@ ga('send', 'pageview');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">jade</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -418,14 +427,6 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">deploy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">linux</a>
               </li>
              
@@ -434,7 +435,15 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">deploy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,6 +456,14 @@ ga('send', 'pageview');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">centos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">google</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,11 +495,19 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">others</a>
+                <a href="javascript:void(0)">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">tmux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">others</a>
               </li>
             
             <div class="clearfix"></div>

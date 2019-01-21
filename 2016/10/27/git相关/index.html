@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="makeup1122">
 <meta property="og:description" content="工作实践中遇到了许多很有用的参数，在这里记录一下。 全局 --git-dir .git目录(默认为当前路径)    一般我们都是cd到相应的代码库目录下进行操作，设置该参数即可从任何位置进行git操作。 --git-dir传入的一定是git的路径，也就是用git init --bare创建的目录，或者.git目录。 对应的环境变量:GIT_DIR，可以在脚本中使用。    --work-tree">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-11-13T13:48:52.777Z">
+<meta property="og:updated_time" content="2018-05-07T10:13:24.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 参数学习">
 <meta name="twitter:description" content="工作实践中遇到了许多很有用的参数，在这里记录一下。 全局 --git-dir .git目录(默认为当前路径)    一般我们都是cd到相应的代码库目录下进行操作，设置该参数即可从任何位置进行git操作。 --git-dir传入的一定是git的路径，也就是用git init --bare创建的目录，或者.git目录。 对应的环境变量:GIT_DIR，可以在脚本中使用。    --work-tree">
@@ -243,6 +243,8 @@ $ git push origin :test
 <li><code>--no-assume-unchanged</code> 与上面的命令正好相反</li>
 </ul>
 <h1 id="git-remote-update"><a href="#git-remote-update" class="headerlink" title="git remote update"></a>git remote update</h1><p>用于mirror库与原始库进行同步。</p>
+<h1 id="git-reflog"><a href="#git-reflog" class="headerlink" title="git reflog"></a>git reflog</h1><p>可以查看所有分支的所有操作记录(包括(包括commit和reset的操作)</p>
+<h1 id="git-revert-commitid"><a href="#git-revert-commitid" class="headerlink" title="git revert commitid"></a>git revert commitid</h1><p>撤销指定CommitId的</p>
 <h1 id="git-ls-files"><a href="#git-ls-files" class="headerlink" title="git ls-files"></a>git ls-files</h1><ul>
 <li><code>-v</code> 查看 ‘假设未改变的’ 文件(使用了<code>git update-index --assume-unchanged</code>命令)</li>
 </ul>
@@ -368,7 +370,7 @@ $ git push origin :test
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 makeup1122
+    		&copy; 2019 makeup1122
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -412,6 +414,14 @@ $ git push origin :test
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">jade</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">ssh</a>
               </li>
              
@@ -421,14 +431,6 @@ $ git push origin :test
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">jade</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,14 +450,6 @@ $ git push origin :test
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">deploy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">linux</a>
               </li>
              
@@ -464,7 +458,15 @@ $ git push origin :test
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">deploy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,6 +479,14 @@ $ git push origin :test
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">centos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">google</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,11 +518,19 @@ $ git push origin :test
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">others</a>
+                <a href="javascript:void(0)">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">tmux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">others</a>
               </li>
             
             <div class="clearfix"></div>
