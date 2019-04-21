@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="makeup1122">
 <meta property="og:description" content="工作实践中遇到了许多很有用的参数，在这里记录一下。 全局 --git-dir .git目录(默认为当前路径)    一般我们都是cd到相应的代码库目录下进行操作，设置该参数即可从任何位置进行git操作。 --git-dir传入的一定是git的路径，也就是用git init --bare创建的目录，或者.git目录。 对应的环境变量:GIT_DIR，可以在脚本中使用。    --work-tree">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2018-05-07T10:13:24.763Z">
+<meta property="og:updated_time" content="2019-03-29T03:29:22.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 参数学习">
 <meta name="twitter:description" content="工作实践中遇到了许多很有用的参数，在这里记录一下。 全局 --git-dir .git目录(默认为当前路径)    一般我们都是cd到相应的代码库目录下进行操作，设置该参数即可从任何位置进行git操作。 --git-dir传入的一定是git的路径，也就是用git init --bare创建的目录，或者.git目录。 对应的环境变量:GIT_DIR，可以在脚本中使用。    --work-tree">
@@ -212,6 +212,7 @@ ga('send', 'pageview');
 <li><code>--since</code>   指定查询的起始时间(例如：<code>--since=&quot;Thu Aug 18&quot;</code>)</li>
 <li><code>--before</code>  指定查询的结束时间(例如：<code>--before=&quot;Thu Aug 18&quot;</code>)</li>
 </ul>
+<h2 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 统计某作者的总提交天数</div><div class="line">git log --author=makeup1122 --pretty=format:&quot;%ad&quot; --date=format:&apos;%Y-%m-%d&apos; |awk &apos;&#123;a[$1]++&#125;END&#123;for(i in a)print i&quot;,&quot;a[i]&#125;&apos;</div><div class="line">git log --author=makeup1122 --pretty=format:&quot;%ad&quot; --date=short |awk &apos;&#123;a[$1]++&#125;END&#123;for(i in a)print i&quot;,&quot;a[i] |&quot;sort&quot;&#125;&apos;</div></pre></td></tr></table></figure>
 <h1 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h1><ul>
 <li><code>--all</code> 推送所有本地分支到远程库，比如<code>git push origin --all</code></li>
 <li><code>--delete</code> 删除远程分支，比如删除远程的<code>test</code>分支：</li>
@@ -442,6 +443,18 @@ $ git push origin :test
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">linux</a>
               </li>
              
@@ -459,14 +472,6 @@ $ git push origin :test
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">deploy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">hooks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">svn</a>
               </li>
              
               <li class="article-tag-list-item">

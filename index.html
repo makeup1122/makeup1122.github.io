@@ -155,6 +155,59 @@ ga('send', 'pageview');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Bailamos" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/21/Bailamos/">《Bailamos》</a>
+    </h1>
+  
+
+        <a href="/2019/04/21/Bailamos/" class="archive-article-date">
+  	<time datetime="2019-04-21T04:11:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Singer-Andrea-Rocha"><a href="#Singer-Andrea-Rocha" class="headerlink" title="Singer Andrea Rocha"></a>Singer <a href="https://www.andrearochamusic.com/" target="_blank" rel="external">Andrea Rocha</a></h3><iframe width="560" height="315" src="https://www.youtube.com/embed/rxz0O2I9nYM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/music/">music</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/21/Bailamos/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-php-auto-deploy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -914,88 +967,6 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-https" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/24/https/">Apache部署https的自签证书</a>
-    </h1>
-  
-
-        <a href="/2017/10/24/https/" class="archive-article-date">
-  	<time datetime="2017-10-24T06:25:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="WampServer-3-0-6-64bit-部署https问题"><a href="#WampServer-3-0-6-64bit-部署https问题" class="headerlink" title="WampServer(3.0.6 64bit) 部署https问题"></a>WampServer(3.0.6 64bit) 部署https问题</h3><ol>
-<li>Apache添加ssl_module后无法启动</li>
-</ol>
-<p>使用<code>httpd -t</code>命令测试配置文件，结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Cannot load modules/mod_ssl.so into server: The operating system cannot</div><div class="line">run %1.</div></pre></td></tr></table></figure></p>
-<p>原因是OpenSSL版本的问题，应该是我之前装过wmap 32bit版本的原因。到<a href="http://slproweb.com/products/Win32OpenSSL.html" target="_blank" rel="external">这里</a>下载合适的版本安装即可。我安装了<code>Win64 OpenSSL v1.0.2L Light</code>后就可以了。</p>
-<ol>
-<li>缺少<code>mod_socache_shmcb</code>模块<br>安装好openssl后apache依旧有错误<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SSLSessionCache: &apos;shmcb&apos; session cache not supported (known names: ). Maybe you need to load the appropriate socache module (mod_socache_shmcb?).</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>继续操作httpd.conf打开mod_socache_shmcb模块的注释。</p>
-<ol>
-<li><p>修改或者创建httpd-ssl.conf中的logs目录</p>
-</li>
-<li><p><a href="https://localhost" target="_blank" rel="external">https://localhost</a> 404错误<br>因为我的wamp设置了多个vhost，都只设置了<code>*:80</code>端口，而未设置https的443端口。在extra/httpd-vhost.conf配置文件中添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># https</div><div class="line">&lt;VirtualHost *:443&gt;</div><div class="line">	ServerName localhost</div><div class="line">	DocumentRoot D:/wamp64/www</div><div class="line">	&lt;Directory  &quot;D:/wamp64/www/&quot;&gt;</div><div class="line">		Options +Indexes +Includes +FollowSymLinks +MultiViews</div><div class="line">		AllowOverride All</div><div class="line">		Require all granted</div><div class="line">	&lt;/Directory&gt;</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>此网站无法提供安全连接<br>继续修改httpd-vhost.conf配置文件:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;VirtualHost *:443&gt;</div><div class="line">	ServerName localhost</div><div class="line">	DocumentRoot D:/wamp64/www</div><div class="line">	&lt;Directory  &quot;D:/wamp64/www/&quot;&gt;</div><div class="line">		Options +Indexes +Includes +FollowSymLinks +MultiViews</div><div class="line">		AllowOverride All</div><div class="line">		Require all granted</div><div class="line">		# Require local</div><div class="line">	&lt;/Directory&gt;</div><div class="line">	SSLEngine on</div><div class="line">	SSLCertificateFile &quot;E:/libing/https/private/localhost.crt&quot;</div><div class="line">	SSLCertificateKeyFile &quot;E:/libing/https/private/private.key&quot;</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>其实<code>extra/httpd-ssl.conf</code>就是以vhost的形式配置的，可以删除上面步骤4和5的过程，直接修改<code>extra/httpd-ssl.conf</code>中的<code>ServerName</code>和<code>DocumentRoot</code>即可解决上面的问题。<br>如果要在一个IP地址上部署多个SSL网站，可以设置多个不同的SSL端口或者多个网站和域名都使用同一个证书。这是因为SSL握手协议过程中,是通过IP+Port来进行通信，一个IP的一个端口只能返给客户一张SSL证书（即使有多张证书，也只能返回第一张，因为无法分辨用户会需要返回哪张证书）。</p>
-<h3 id="关于Let’s-Encrypt"><a href="#关于Let’s-Encrypt" class="headerlink" title="关于Let’s Encrypt"></a>关于Let’s Encrypt</h3><ol>
-<li>自动部署SSL</li>
-<li>自动续期（测试Synology） </li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://stackoverflow.com/questions/40017498/cannot-load-modules-mod-ssl-so-into-server" target="_blank" rel="external">Stackoverflow关于ssl_module的问题。</a></li>
-<li><a href="https://letsencrypt.org" target="_blank" rel="external">Let’s Encrypt</a></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Encrypt/">Encrypt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apache/">apache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/24/https/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1082,6 +1053,18 @@ ga('send', 'pageview');
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">linux</a>
               </li>
              
@@ -1099,14 +1082,6 @@ ga('send', 'pageview');
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">deploy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">hooks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)">svn</a>
               </li>
              
               <li class="article-tag-list-item">
