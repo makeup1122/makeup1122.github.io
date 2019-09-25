@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://makeup1122.github.io">
-  <title>Tag: shadowsocks | makeup1122</title>
+  <title>在Vue中使用Tinymce5遇到的问题记录 | makeup1122</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="makeup1122">
-<meta property="og:url" content="http://makeup1122.github.io/tags/shadowsocks/index.html">
+  <meta name="description" content="基本使用 安装并使用官方的vue集成组件 1$ npm install @tinymce/tinymce-vue  加载组件 1import Editor from &amp;apos;@tinymce/tinymce-vue&amp;apos;;  使用组件 1&amp;lt;editor api-key=&amp;quot;API_KEY&amp;quot; :init=&amp;quot;&amp;#123;plugins: &amp;apos;word">
+<meta name="keywords" content="Vue,TinyMCE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Vue中使用Tinymce5遇到的问题记录">
+<meta property="og:url" content="http://makeup1122.github.io/2019/09/25/vue-tinymce5/index.html">
 <meta property="og:site_name" content="makeup1122">
+<meta property="og:description" content="基本使用 安装并使用官方的vue集成组件 1$ npm install @tinymce/tinymce-vue  加载组件 1import Editor from &amp;apos;@tinymce/tinymce-vue&amp;apos;;  使用组件 1&amp;lt;editor api-key=&amp;quot;API_KEY&amp;quot; :init=&amp;quot;&amp;#123;plugins: &amp;apos;word">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-09-25T14:32:00.956Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="makeup1122">
+<meta name="twitter:title" content="在Vue中使用Tinymce5遇到的问题记录">
+<meta name="twitter:description" content="基本使用 安装并使用官方的vue集成组件 1$ npm install @tinymce/tinymce-vue  加载组件 1import Editor from &amp;apos;@tinymce/tinymce-vue&amp;apos;;  使用组件 1&amp;lt;editor api-key=&amp;quot;API_KEY&amp;quot; :init=&amp;quot;&amp;#123;plugins: &amp;apos;word">
   
     <link rel="alternative" href="/atom.xml" title="makeup1122" type="application/atom+xml">
   
@@ -165,68 +170,189 @@ ga('send', 'pageview');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vue-tinymce5" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/03/centos7-docker-shadowsocks/" class="archive-article-date">
-  	<time datetime="2019-09-03T03:06:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/03/centos7-docker-shadowsocks/">Centos7安装Docker与配置SS</a>
+    <h1 class="article-title" itemprop="name">
+      在Vue中使用Tinymce5遇到的问题记录
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/09/25/vue-tinymce5/" class="archive-article-date">
+  	<time datetime="2019-09-25T14:13:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><ol>
+<li><p>安装并使用官方的<a href="https://www.tiny.cloud/docs/integrations/vue/" target="_blank" rel="external">vue集成组件</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install @tinymce/tinymce-vue</div></pre></td></tr></table></figure>
+</li>
+<li><p>加载组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import Editor from &apos;@tinymce/tinymce-vue&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;editor api-key=&quot;API_KEY&quot; :init=&quot;&#123;plugins: &apos;wordcount&apos;&#125;&quot;&gt;&lt;/editor&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>其他配置参见<a href="https://www.tiny.cloud/docs/integrations/vue/#configuringtheeditor" target="_blank" rel="external">官方文档</a></p>
+</li>
+</ol>
+<h1 id="加载用户自定义插件"><a href="#加载用户自定义插件" class="headerlink" title="加载用户自定义插件"></a>加载用户自定义插件</h1><ol>
+<li>我使用了由<a href="http://tinymce.ax-z.cn/" target="_blank" rel="external">tinymce.ax-z.cn</a>提供的<a href="http://tinymce.ax-z.cn/more-plugins/indent2em.php" target="_blank" rel="external">首行缩进</a>和<a href="http://tinymce.ax-z.cn/more-plugins/lineheight.php" target="_blank" rel="external">设置行高</a>两个插件</li>
+<li>在Tinymce-vue组件中，使用init配置的<a href="https://www.tiny.cloud/docs/configure/integration-and-setup/#setup" target="_blank" rel="external">setup</a>参数来加载自定义插件文件，我的一个列子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">  ...</div><div class="line">this.init = &#123;</div><div class="line">  setup: function() &#123;</div><div class="line">    import(&apos;./plugins/lineheight.js&apos;)</div><div class="line">    import(&apos;./plugins/indent2em.js&apos;)</div><div class="line">  &#125;,</div><div class="line">  height: this.height,</div><div class="line">  menubar: false,</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="在多层弹出框中-TinyMCE的插件输入框无法获取焦点问题"><a href="#在多层弹出框中-TinyMCE的插件输入框无法获取焦点问题" class="headerlink" title="在多层弹出框中,TinyMCE的插件输入框无法获取焦点问题"></a>在多层弹出框中,TinyMCE的插件输入框无法获取焦点问题</h1><ol>
+<li><p>如果tinymce-vue组件在多层dialog框中调用，会出现部分带有输入框的插件无法获取焦点从而无法输入内容的情况，因为大部分模态(modal)窗口阻止来获取焦点的行为。可以根据相应的框架进行调整。比如我是用来VuetifyJS的Dialog组件，使用组件提供的<code>retain-focus</code>参数即可解决以上问题。</p>
+</li>
+<li><p>参考文档：<a href="https://stackoverflow.com/questions/36279941/using-tinymce-in-a-modal-dialog" target="_blank" rel="external">https://stackoverflow.com/questions/36279941/using-tinymce-in-a-modal-dialog</a></p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">shadowsocks</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">centOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">TinyMCE</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://makeup1122.github.io/2019/09/25/vue-tinymce5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/09/03/centos7-docker-shadowsocks/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Centos7安装Docker与配置SS</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://makeup1122.github.io/2019/09/25/vue-tinymce5/",
+  owner: 'makeup1122',
+  repo: 'makeup1122.github.io',
+  oauth: {
+    client_id: 'b08c902130765682a79b',
+    client_secret: 'e3485868f77a55b619c8e6c1fa2faf33d4d60002',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -249,9 +375,9 @@ ga('send', 'pageview');
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

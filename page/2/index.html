@@ -167,6 +167,145 @@ ga('send', 'pageview');
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ssh-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/24/ssh-config/">使用ssh config配置文件</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/24/ssh-config/" class="archive-article-date">
+  	<time datetime="2018-01-24T13:44:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ssh的config配置参数说明"><a href="#ssh的config配置参数说明" class="headerlink" title="ssh的config配置参数说明"></a>ssh的config配置参数说明</h1><h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><ul>
+<li>～/.ssh/config 用户配置文件。</li>
+<li>/etc/ssh/ssh_config 系统配置文件。</li>
+</ul>
+<p>ssh读取配置文件的优先级为：</p>
+<ol>
+<li>命令行参数。</li>
+<li>用户配置文件(~/.ssh/config)。</li>
+<li>系统配置文件(/etc/ssh/ssh_config)。<h3 id="一般格式"><a href="#一般格式" class="headerlink" title="一般格式"></a>一般格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Host *</div><div class="line">    	ControlMaster auto</div><div class="line">    	ControlPath ~/.ssh/%h-%p-%r</div><div class="line">    	ControlPersist yes</div><div class="line">Host server-alias</div><div class="line">    	HostName        129.12.12.122</div><div class="line">    	Port            22</div><div class="line">    	User            root</div><div class="line">        IdentityFile    ~/mykey/SSH/id_rsa</div><div class="line">Host text.com</div><div class="line">	    Port	22222</div><div class="line">	    User	text</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><h5 id="普通参数"><a href="#普通参数" class="headerlink" title="普通参数"></a>普通参数</h5><ul>
+<li>Host ：描述参数的作用范围。</li>
+<li>HostName ：ip或域名。当Host参数已经指明时可以不用指定该参数。</li>
+<li>User ：用户名。</li>
+<li>Port ：ssh端口号，默认22。</li>
+</ul>
+<h5 id="连接参数"><a href="#连接参数" class="headerlink" title="连接参数"></a>连接参数</h5><ul>
+<li>ServerAliveInterval ：发送心跳包到服务器的时间间隔(秒)。当ssh连接不稳定或不可靠时，你希望知道链接是否可用。</li>
+<li>LogLevel ：客户端记录日志的级别。对无需记录日志或者调试ssh链接时非常有用，可选参数从无到繁分别是：<code>QUIET, FATAL, ERROR, INFO, VERBOSE, DEBUG1, DEBUG2, and DEBUG3</code>。</li>
+<li>StrictHostKeyChecking ：是否自动校验服务端的host key并写入know_hosts。默认是询问(<code>ask</code>)，设置为<code>no</code>则会自动写入，当你需要链接大量服务器端时很有用，但也会产生安全问题，所以请谨慎使用。</li>
+<li>UserKnownHostsFile ：know_hosts的存放位置。一般无需单独配置该项，当<code>StrictHostKeyChecking</code>设置为’no’时，可以设置为<code>/dev/null</code>。</li>
+<li>VisualHostKey ：设置为<code>yes</code>可以告诉服务端以ASCII的格式返回服务器host key。我不知道有啥用，那个ASCII图不太能看懂。</li>
+<li>Compression ：开启数据压缩。当你的链接很慢或者需要scp时会很有用，一般用户无需这个参数。</li>
+<li>ConnectTimeout ：设置超时时间来覆盖系统默认的TCP连接超时时间。</li>
+</ul>
+<h5 id="转发参数"><a href="#转发参数" class="headerlink" title="转发参数"></a>转发参数</h5><p>略</p>
+<h5 id="关于key的参数"><a href="#关于key的参数" class="headerlink" title="关于key的参数"></a>关于key的参数</h5><ul>
+<li>IdentityFile ：为每个链接指定私钥文件的位置。当你的私钥文件不在默认位置(比如<code>~/.ssh/id_rsa</code>)或者你有多个不同功能的私钥文件时会很有用。</li>
+<li>IdentitiesOnly ：强制使用config文件内配置的某一私钥文件。当你有2个以上的私钥文件可用时会用到这个参数。</li>
+<li>IdentityAgent ：Specifies the UNIX-domain socket used to communicate with the authentication agent.</li>
+</ul>
+<h5 id="多路复用单个TCP链接"><a href="#多路复用单个TCP链接" class="headerlink" title="多路复用单个TCP链接"></a>多路复用单个TCP链接</h5><p>这个很有用，可以大幅提升ssh连接速度。</p>
+<ul>
+<li>ControlMaster ：当多路复用可用时是否开启。设置为<code>auto</code>即可启用。</li>
+<li>ControlPath ：设置socket文件的位置和文件名格式，比如可以设置为<code>~/.ssh/%h-%p-%r</code>。参考TOKEN的内容。</li>
+<li>ControlPersist ：复用链接的持续时间。可设置位为整数(秒)、<code>4h</code>(小时)、<code>yes</code>(长时间)等。</li>
+</ul>
+<h5 id="权限认证"><a href="#权限认证" class="headerlink" title="权限认证"></a>权限认证</h5><ul>
+<li>PasswordAuthentication ：设置是否开启密码认证。可选参数只能为<code>yes</code>或者<code>no</code>(默认为no)。</li>
+<li>PubkeyAuthentication：设置是否开启密钥认证。可选参数只能为<code>yes</code>或者<code>no</code>(默认为yes)。</li>
+</ul>
+<h5 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h5><ul>
+<li>LocalCommand ：连接服务器成功时在本地执行的命令。除非启用下面的PermitLocalCommand，否则该参数会被直接忽略。</li>
+<li>PermitLocalCommand ：运行本地执行命令。</li>
+<li>RemoteCommand ：连接服务器成功时在服务器端执行的命令。比如启动<code>tmux</code>。</li>
+</ul>
+<h3 id="TOKEN"><a href="#TOKEN" class="headerlink" title="TOKEN"></a>TOKEN</h3><p>Arguments to some keywords can make use of tokens, which are expanded at runtime:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">%%    A literal `%&apos;.</div><div class="line">%C    Shorthand for %l%h%p%r.</div><div class="line">%d    Local user&apos;s home directory.</div><div class="line">%h    The remote hostname.</div><div class="line">%i    The local user ID.</div><div class="line">%L    The local hostname.</div><div class="line">%l    The local hostname, including the domain name.</div><div class="line">%n    The original remote hostname, as given on the command line.</div><div class="line">%p    The remote port.</div><div class="line">%r    The remote username.</div><div class="line">%u    The local username.</div></pre></td></tr></table></figure></p>
+<ol>
+<li>Match exec accepts the tokens %%, %h, %L, %l, %n, %p, %r, and %u.</li>
+<li>CertificateFile accepts the tokens %%, %d, %h, %l, %r, and %u.</li>
+<li>ControlPath accepts the tokens %%, %C, %h, %i, %L, %l, %n, %p, %r, and %u.</li>
+<li>HostName accepts the tokens %% and %h.</li>
+<li>IdentityAgent and IdentityFile accept the tokens %%, %d, %h, %l, %r, and 1. %u.</li>
+<li>LocalCommand accepts the tokens %%, %C, %d, %h, %l, %n, %p, %r, and %u.</li>
+<li>ProxyCommand accepts the tokens %%, %h, %p, and %r.</li>
+<li>RemoteCommand accepts the tokens %%, %C, %d, %h, %l, %n, %p, %r, and %u.</li>
+</ol>
+<h3 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h3><ol>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-configure-custom-connection-options-for-your-ssh-client" target="_blank" rel="external">内容参考链接</a></li>
+<li>完整内容可使用如下命令查看：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; man ssh_config</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/24/ssh-config/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-phpmailer&amp;QQ" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1090,87 +1229,6 @@ fwrite($socket_handle,&apos;\r\n&apos;);
 
 
   
-    <article id="post-BOM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/BOM/">PHP中的BOM问题</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/11/BOM/" class="archive-article-date">
-  	<time datetime="2017-01-11T00:46:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;最近在写html时，发现某个页面的顶部总是有一行内容为<code>&amp;#65279;</code>的空白，导致顶部留下空行，原来发现是windows环境下的BOM导致的。用非记事本的高级编辑器修改下编码，重新保持即可解决问题。<br>&#160; &#160; &#160; &#160;简单来说就是在用类似windows自带的记事本等软件时，在保存一个以UTF-8编码的文件时，会在文件开始的地方插入三个不可见的字符（0xEF 0xBB 0xBF，即BOM），用来表示这个文件的编码格式，但是偏偏php不会自动忽略BOM，所以才会造成页面的 top padding 设置为0，也无法让整个网页紧贴浏览器顶部。</p>
-<hr>
-<p>&#160; &#160; &#160; &#160;无独有偶，昨天在做微信开发接入测试的验证服务器有效性时，总是验证失败，提示<code>token check faild</code>，调试发现是我的接口返回值的头部有一行空白，第一反应就是“这不是BOM么”，立马把所有的文件格式重新用UTF-8 without BOM格式保存了一边,发现问题没有解决…后来才发现，是在工程的配置文件(config.php)的开头有一个换行符：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">换行符</div><div class="line"><span class="meta">&lt;?php</span></div><div class="line">....</div></pre></td></tr></table></figure></p>
-<p>我对php也真是醉了，不愧是最好的语言…</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">utf8</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/11/BOM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1268,23 +1326,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jade</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1296,7 +1346,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">shadowsocks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1308,7 +1362,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1317,6 +1371,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1336,15 +1394,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1384,7 +1442,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TinyMCE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tmux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1393,10 +1463,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
             
             <div class="clearfix"></div>
