@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://makeup1122.github.io">
-  <title>Archives: 2017/1 | makeup1122</title>
+  <title>关于ServerSentEvents(服务器发送事件)中的EventSource添加Header认证的问题 | makeup1122</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="makeup1122">
-<meta property="og:url" content="http://makeup1122.github.io/archives/2017/01/index.html">
+  <meta name="description" content="EventSource关于EventSource的介绍和实例就不多说了，网上一大堆。 后台权限认证 原生EventSource接口过于简单，看样子是个半成品的内容，更没有迹象表明会在未来有任何变化…  由于原生EventSource接口，没有任何配置参数或者方法可以设置请求的header内容。所以对于后台接口需要权限认证的接口来说，就比较麻烦了，以下是我了解到的几种解决方法或者说妥协方式：  使用">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于ServerSentEvents(服务器发送事件)中的EventSource添加Header认证的问题">
+<meta property="og:url" content="http://makeup1122.github.io/2020/01/18/ServerSentEvents/index.html">
 <meta property="og:site_name" content="makeup1122">
+<meta property="og:description" content="EventSource关于EventSource的介绍和实例就不多说了，网上一大堆。 后台权限认证 原生EventSource接口过于简单，看样子是个半成品的内容，更没有迹象表明会在未来有任何变化…  由于原生EventSource接口，没有任何配置参数或者方法可以设置请求的header内容。所以对于后台接口需要权限认证的接口来说，就比较麻烦了，以下是我了解到的几种解决方法或者说妥协方式：  使用">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2020-01-17T17:01:31.277Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="makeup1122">
+<meta name="twitter:title" content="关于ServerSentEvents(服务器发送事件)中的EventSource添加Header认证的问题">
+<meta name="twitter:description" content="EventSource关于EventSource的介绍和实例就不多说了，网上一大堆。 后台权限认证 原生EventSource接口过于简单，看样子是个半成品的内容，更没有迹象表明会在未来有任何变化…  由于原生EventSource接口，没有任何配置参数或者方法可以设置请求的header内容。所以对于后台接口需要权限认证的接口来说，就比较麻烦了，以下是我了解到的几种解决方法或者说妥协方式：  使用">
   
     <link rel="alternative" href="/atom.xml" title="makeup1122" type="application/atom+xml">
   
@@ -155,106 +160,188 @@ ga('send', 'pageview');
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ServerSentEvents" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/13/VisualSVN-hooks/" class="archive-article-date">
-  	<time datetime="2017-01-13T06:39:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/13/VisualSVN-hooks/">VisualSVN中的hooks</a>
+    <h1 class="article-title" itemprop="name">
+      关于ServerSentEvents(服务器发送事件)中的EventSource添加Header认证的问题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/01/18/ServerSentEvents/" class="archive-article-date">
+  	<time datetime="2020-01-17T16:18:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="EventSource"><a href="#EventSource" class="headerlink" title="EventSource"></a>EventSource</h1><p>关于EventSource的介绍和实例就不多说了，网上一大堆。</p>
+<h1 id="后台权限认证"><a href="#后台权限认证" class="headerlink" title="后台权限认证"></a>后台权限认证</h1><ul>
+<li>原生EventSource接口过于简单，看样子是个半成品的内容，更没有迹象表明会在未来有任何变化…</li>
+</ul>
+<p>由于原生EventSource接口，没有任何配置参数或者方法可以设置请求的header内容。所以对于后台接口需要权限认证的接口来说，就比较麻烦了，以下是我了解到的几种解决方法或者说妥协方式：</p>
+<ol>
+<li>使用fetch()方法替换EventSource<ul>
+<li>缺点：<ol>
+<li>fetch接口要比EventSource复杂的多</li>
+<li>部分浏览器对fetch() streaming的支持不足</li>
+<li>没有重连机制</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>使用query参数来设置自定义header<ul>
+<li>缺点：<ol>
+<li>对既有的后台服务器认证方式，可能增加额外的开发工作</li>
+<li>降低安全性</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>使用cookie</li>
+<li>使用第三方的polyfill版本的EventSource，比如这个<a href="https://github.com/Yaffle/EventSource/" target="_blank" rel="noopener">Yaffle<br>/<br>EventSource</a></li>
+</ol>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/whatwg/html/issues/2177" target="_blank" rel="noopener">https://github.com/whatwg/html/issues/2177</a><br><a href="https://stackoverflow.com/questions/28176933/http-authorization-header-in-eventsource-server-sent-events" target="_blank" rel="noopener">https://stackoverflow.com/questions/28176933/http-authorization-header-in-eventsource-server-sent-events</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">svn</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hooks</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://makeup1122.github.io/2020/01/18/ServerSentEvents/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/11/BOM/" class="archive-article-date">
-  	<time datetime="2017-01-11T00:46:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/25/vue-tinymce5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">在Vue中使用Tinymce5遇到的问题记录</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/11/BOM/">PHP中的BOM问题</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">utf8</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://makeup1122.github.io/2020/01/18/ServerSentEvents/",
+  owner: 'makeup1122',
+  repo: 'makeup1122.github.io',
+  oauth: {
+    client_id: 'e6c18c96cce888ad59cb',
+    client_secret: '2e1ce3aaaaee8f718e1dd4cc290ec848bd755ed0',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -277,8 +364,8 @@ ga('send', 'pageview');
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
