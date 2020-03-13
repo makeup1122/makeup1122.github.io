@@ -29,19 +29,6 @@
     }
   </style>
   
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-86439875-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
 
   
 
@@ -92,6 +79,10 @@ ga('send', 'pageview');
 		        
 					<a class="mail" target="_blank" href="mailto:makeup1123@163.com" title="mail"><i class="icon-mail"></i></a>
 		        
+					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+		        
+					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+		        
 			</div>
 		</nav>
 	</header>		
@@ -131,6 +122,10 @@ ga('send', 'pageview');
 			        
 						<a class="mail" target="_blank" href="mailto:makeup1123@163.com" title="mail"><i class="icon-mail"></i></a>
 			        
+						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+			        
 				</div>
 			</nav>
 
@@ -156,6 +151,208 @@ ga('send', 'pageview');
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-centos6-9UpdateMysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/01/centos6-9UpdateMysql/">centos6.9升级Mysql版本至5.7</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/01/centos6-9UpdateMysql/" class="archive-article-date">
+  	<time datetime="2018-03-01T08:41:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>最近习惯用Mysql5.7的Json字段类型了，而低于5.7版本的Mysql都不支持JSON字段类型。</p>
+<h1 id="升级Mysql"><a href="#升级Mysql" class="headerlink" title="升级Mysql"></a>升级Mysql</h1><h2 id="安装最新的Mysql的Yum源"><a href="#安装最新的Mysql的Yum源" class="headerlink" title="安装最新的Mysql的Yum源"></a>安装最新的Mysql的Yum源</h2><ol>
+<li>下载对应系统的mysql最新Yum源的rpm安装包，下载地址:<a href="https://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/repo/yum/</a></li>
+<li><p>安装步骤1的rpm包,这样就安装好了Mysql最新的Yum源地址库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># rpm -ivh mysql57-community-release-el6-11.noarch.rpmrpm ivh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前mysql版本和Yum源中最新的mysql版本(是否满足需求)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum list|grep mysql-community</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行升级命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum update mysql-server</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><h2 id="启动Mysqld失败"><a href="#启动Mysqld失败" class="headerlink" title="启动Mysqld失败"></a>启动Mysqld失败</h2><h3 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h3><p>mysql错误日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] Fatal error: mysql.user table is damaged. Please run mysql_upgrade.</span><br></pre></td></tr></table></figure></p>
+<p>根据提示执行mysql_upgrade，继续报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root]#  mysql_upgrade</span><br><span class="line">mysql_upgrade: Got error: 2002: Can&apos;t connect to local MySQL server through socket &apos;/var/lib/mysql/mysql.sock&apos; (2) while connecting to the MySQL server</span><br><span class="line">Upgrade process encountered error and will not continue.</span><br></pre></td></tr></table></figure></p>
+<h3 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h3><p>Mysql版本升级，却未执行mysql_upgrade所致。</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
+<li><p>登陆服务器，编辑/etc/my.cnf文件，找到<code>[mysqld]</code>模块，如下添加<code>skip-grant-tables</code>并保存退出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[mysqld]</span><br><span class="line">skip-grant-tables</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动mysqld服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># service mysqld start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>mysql_upgrade</code>命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mysql_upgrade</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行完毕后，去掉(或注释)步骤1在/etc/my.cnf中添加的<code>skip-grant-tables</code>选项</p>
+</li>
+<li>重启mysqld服务：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># service mysqld restart</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/01/centos6-9UpdateMysql/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-install-google-bbr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/31/install-google-bbr/">CentOS安装Google BBR</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/31/install-google-bbr/" class="archive-article-date">
+  	<time datetime="2018-01-31T02:21:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<li>我的服务器是Vultr的东京机房VPS，系统是CentOS7 64bit版本。</li>
+<li>检查Linux内核版本。Google BBR要求linux内核最低版本为4.9,如果版本低于4.9请先升级内核版本。</li>
+</ol>
+<h3 id="安装Google-BBR"><a href="#安装Google-BBR" class="headerlink" title="安装Google BBR"></a>安装Google BBR</h3><ol>
+<li>复制并执行以下代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#&gt; echo &apos;net.core.default_qdisc=fq&apos; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">#&gt; echo &apos;net.ipv4.tcp_congestion_control=bbr&apos; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">#&gt; sysctl -p</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>执行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@goingmerry ~]# uname -sr</span><br><span class="line">Linux 4.15.0-1.el7.elrepo.x86_64</span><br><span class="line">[root@goingmerry ~]# echo &apos;net.core.default_qdisc=fq&apos; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">net.core.default_qdisc=fq</span><br><span class="line">[root@goingmerry ~]# echo &apos;net.ipv4.tcp_congestion_control=bbr&apos; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">net.ipv4.tcp_congestion_control=bbr</span><br><span class="line">[root@goingmerry ~]# sysctl -p</span><br><span class="line">net.ipv6.conf.all.accept_ra = 2</span><br><span class="line">net.ipv6.conf.eth0.accept_ra = 2</span><br><span class="line">net.core.default_qdisc = fq</span><br><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br><span class="line">[root@goingmerry ~]#</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>检查安装是否成功<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@goingmerry ~]# sysctl net.ipv4.tcp_available_congestion_control</span><br><span class="line">net.ipv4.tcp_available_congestion_control = reno cubic bbr</span><br><span class="line">[root@goingmerry ~]# sysctl -n net.ipv4.tcp_congestion_control</span><br><span class="line">bbr</span><br><span class="line">[root@goingmerry ~]# lsmod | grep bbr</span><br><span class="line">tcp_bbr                20480  5</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h5><ol>
+<li><a href="https://github.com/google/bbr" target="_blank" rel="noopener">Github:google/bbr</a></li>
+<li><a href="http://vultr.aicnm.com/CentOS%E5%AE%89%E8%A3%85Google-BBR%E5%8A%A0%E9%80%9F%E5%B7%A5%E5%85%B7%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/" target="_blank" rel="noopener">参考文章</a></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">centos</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">google</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/31/install-google-bbr/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-update-linux-version" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -217,6 +414,98 @@ ga('send', 'pageview');
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/01/31/update-linux-version/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-shadowsocksOnVultr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/26/shadowsocksOnVultr/">Centos7防火墙设置命令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/26/shadowsocksOnVultr/" class="archive-article-date">
+  	<time datetime="2018-01-26T14:40:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="CentOS-7-x的firewall"><a href="#CentOS-7-x的firewall" class="headerlink" title="CentOS 7.x的firewall"></a>CentOS 7.x的firewall</h2><ol>
+<li><p>添加新的防火墙端口配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; firewall-cmd --zone=public --add-port=99999/tcp --permanent</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生效配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; firewall-cmd --list-port</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除某个端口配置</p>
+<pre><code>#&gt; firewall-cmd --zone=public --remove-port=99999/tcp --permanent
+</code></pre><p>记得要执行reload生效修改。</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">shadowsocks</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/26/shadowsocksOnVultr/">展开全文 >></a>
         </p>
       
 
@@ -964,263 +1253,6 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-nginx-ueditor-issue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/10/nginx-ueditor-issue/">Nginx问题记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/10/nginx-ueditor-issue/" class="archive-article-date">
-  	<time datetime="2017-07-10T07:10:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在nginx使用过程中，会有很多问题，在此做记录。</p>
-<h3 id="由于请求header过大导致的502错误"><a href="#由于请求header过大导致的502错误" class="headerlink" title="由于请求header过大导致的502错误"></a>由于请求header过大导致的<strong>502</strong>错误</h3><p>测试在一个上传附件图片的功能时，每次上传一个附件会在cookie里缓存附件的路径，当缓存的内容超过1KB时，再次请求后台即会发生502错误。<br>nginx的错误日志如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[error] 9892#0: *79051 upstream sent too big header while reading response header from upstream</span><br></pre></td></tr></table></figure></p>
-<p>原因是nginx配置项中的<code>proxy_buffer_size</code>参数默认是1KB，请求头部内容超过这个默认值就会报错显示502，在配置文件中添加或修改相应的数值即可。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ueditor</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/10/nginx-ueditor-issue/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-htaccess" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/01/htaccess/">学习 .htaccess中的Rewirte</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/01/htaccess/" class="archive-article-date">
-  	<time datetime="2017-03-01T07:23:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用.htaccess的Rewrite规则，需开启apache的rewrite模块。</p>
-<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><ul>
-<li><strong>RewriteEngine <em>on|off</em> </strong><br>  关闭或者打开Rewirte功能</li>
-<li><strong>RewriteBase <em>基准路径</em> </strong><br>  设置目录级重写的基准URL</li>
-<li><strong>RewriteCond <em>字符串参数(Pattern)</em>    <em>匹配参数</em> </strong><br>  定义重写发生的条件。仅当设定的条件满足时，才会执行后面RewriteCond命令。</li>
-<li><strong>RewriteRule <em>匹配参数</em> <em>替换参数</em> <em>[flags]</em> </strong><br>为RewirteEngine定义重写规则。<br>第三个<em>flags</em>参数为可选参数,格式为逗号分隔的一个数组，常用内容:<ol>
-<li>‘nocase|NC’ (no case) 忽略大小写</li>
-<li>‘passthrough|PT’    传递参数到下一个规则,主要是为了给*Alias, ScriptAlias, Redirect等指令传递参数。</li>
-<li>‘qsappend|QSA’ </li>
-<li>‘last|L’ 最后一条规则，执行完成立即停止Rewirte。</li>
-<li>‘redirect|R [=code]’ 跳转的状态码，默认位302(暂时性转移Temporarily Moved)。</li>
-</ol>
-</li>
-</ul>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
-<li>去掉php中的index.php<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">    RewriteEngine On</span><br><span class="line">    RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">    RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">    RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure></li>
-<li>匹配手机等移动端<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">    RewriteEngine On</span><br><span class="line">    RewriteCond %&#123;HTTP_USER_AGENT&#125; &quot;android|blackberry|googlebot-mobile|iemobile|ipad|iphone|ipod|opera mobile|palmos|webos&quot; [NC]</span><br><span class="line">    RewriteRule ^(.*)$ /mobile/$1 [L,R=302]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="其他用到过的指令"><a href="#其他用到过的指令" class="headerlink" title="其他用到过的指令"></a>其他用到过的指令</h3><ul>
-<li><strong>ErrorDocument <em>错误码</em> <em>错误页面文档路径</em></strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ErrorDocument 403 /error_page/zjn403.html</span><br><span class="line">ErrorDocument 404 /error_page/zjn404.html</span><br></pre></td></tr></table></figure></li>
-<li><strong>Options +FollowSymlinks -Multiviews</strong><br>Options指令用于启用/关闭某些特性。<code>+FollowSymLinks</code>表示服务器允许在此目录中使用符号连接。<code>-Multiviews</code>不允许使用mod_negotiation提供内容协商的”多重视图”。<code>Options FollowSymLinks</code>必须伴随<code>RewriteEngine On</code>出现。<br>参考:<a href="http://man.chinaunix.net/newsoft/Apache2.2_chinese_manual/mod/directives.html" target="_blank" rel="noopener">http://man.chinaunix.net/newsoft/Apache2.2_chinese_manual/mod/directives.html</a></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">apache</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/01/htaccess/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-php-quotation-mark" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/11/php-quotation-mark/">PHP中的引号问题</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/11/php-quotation-mark/" class="archive-article-date">
-  	<time datetime="2017-02-11T07:40:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#160; &#160; &#160; &#160;最近用php模拟telnet连接路由器发送指令时，fwrite发送指令后，再次发送回车符(“\n”)和换行符(“\r”)执行当前指令时，并没有按照预想的产生任何效果：</p>
-<pre><code>fwrite($socket_handle,&apos;sys reboot&apos;);
-fwrite($socket_handle,&apos;\r\n&apos;);
-</code></pre><p>&#160; &#160; &#160; &#160;查询了一番才发现，php代码中用单引号包含的内容如果含有转义字符，那么转义字符不会被转义，而是当作字符串被处理。换成双引号即可。另外单双引号的区别就是，在单引号内的变量不会被解释执行，其他都一样，使用时保持一致即可。</p>
-<ol>
-<li><a href="http://www.cnblogs.com/yunf/archive/2011/04/20/2021830.html" target="_blank" rel="noopener">回车符和换行符的区别</a></li>
-<li><a href="http://baike.baidu.com/link?url=gOWNyWAZ5bkGwrbA1koAZ6Z0cDNjXvn7HyDOykHR8y-QMzS0j3RriKRfvtCTfFTDi4ZJ_z8jVKDcL_5c05Sl_XnHt82LB7Yul4Zz9pLKHr7GUm8xRuTcRvx7Rph3KcGh" target="_blank" rel="noopener">常用转义字符</a></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/11/php-quotation-mark/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1310,11 +1342,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jade</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">utf8</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">github pages</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1326,27 +1390,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1362,7 +1406,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1370,19 +1418,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">deploy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1410,14 +1458,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">photo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tmux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">phpmailer</a>
               </li>
              
@@ -1426,11 +1466,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color1">photo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color5">tmux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1442,11 +1482,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jade</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
             
             <div class="clearfix"></div>

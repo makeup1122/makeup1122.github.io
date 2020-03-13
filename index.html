@@ -29,19 +29,6 @@
     }
   </style>
   
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-86439875-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
 
   
 
@@ -92,6 +79,10 @@ ga('send', 'pageview');
 		        
 					<a class="mail" target="_blank" href="mailto:makeup1123@163.com" title="mail"><i class="icon-mail"></i></a>
 		        
+					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+		        
+					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+		        
 			</div>
 		</nav>
 	</header>		
@@ -131,6 +122,10 @@ ga('send', 'pageview');
 			        
 						<a class="mail" target="_blank" href="mailto:makeup1123@163.com" title="mail"><i class="icon-mail"></i></a>
 			        
+						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+			        
 				</div>
 			</nav>
 
@@ -156,6 +151,96 @@ ga('send', 'pageview');
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-git配置网络代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/19/git配置网络代理/">git配置网络代理</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/19/git配置网络代理/" class="archive-article-date">
+  	<time datetime="2020-02-19T15:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从github使用git clone下载repo时，由于网络问题经常会失败或者速度很慢，而我正巧有科学上网的代理工具，所以配置一下git命令的参数，使得clone走代理即可。</p>
+<h2 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h2><p>[http] 和 [https]</p>
+<h2 id="参数位置"><a href="#参数位置" class="headerlink" title="参数位置"></a>参数位置</h2><ol>
+<li>系统全局参数<br>～/.gitconfig</li>
+<li>当前项目<br>.git/config</li>
+</ol>
+<h2 id="配置修改"><a href="#配置修改" class="headerlink" title="配置修改"></a>配置修改</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config [--global] http.proxy=socks5://127.0.0.1:1080</span><br><span class="line">$ git config [--global] https.proxy=socks5://127.0.0.1:1080</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/code//" class="article-tag-list-link color5">code</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/19/git配置网络代理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-ServerSentEvents" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -228,6 +313,113 @@ ga('send', 'pageview');
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/01/18/ServerSentEvents/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Hexo-admin服务器部署" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/22/Hexo-admin服务器部署/">Hexo-admin服务器部署</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/22/Hexo-admin服务器部署/" class="archive-article-date">
+  	<time datetime="2019-10-22T09:57:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>hexo有个很好用的工具<a href="https://github.com/jaredly/hexo-admin" target="_blank" rel="noopener">hexo-admin</a>，可以将常规的hexo命令(new、deploy等)可视化，并且提供了一个在线的markdown编辑器，使得编写hexo blog脱离了本地开发环境和IDE，从而变得更灵活。</p>
+<h1 id="安装hexo-admin"><a href="#安装hexo-admin" class="headerlink" title="安装hexo-admin"></a>安装hexo-admin</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-admin</span><br></pre></td></tr></table></figure>
+<p>安装之后，hexo服务启动参数添加<code>-d</code>选项即可同时启动hexo-admin界面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -d</span><br></pre></td></tr></table></figure></p>
+<p>成功启动后即可访问hexo-admin的界面：<a href="http://localhost:4000/admin/" target="_blank" rel="noopener">http://localhost:4000/admin/</a></p>
+<h1 id="配置hexo服务"><a href="#配置hexo服务" class="headerlink" title="配置hexo服务"></a>配置hexo服务</h1><p>我使用pm2来管理管理hexo服务进程，使用nginx反向代理来处理请求。</p>
+<h3 id="使用pm2管理hexo服务"><a href="#使用pm2管理hexo服务" class="headerlink" title="使用pm2管理hexo服务"></a>使用pm2管理hexo服务</h3><h6 id="1-安装pm2"><a href="#1-安装pm2" class="headerlink" title="1.安装pm2"></a>1.安装pm2</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install pm2 -g</span><br></pre></td></tr></table></figure>
+<h6 id="2-添加启动文件"><a href="#2-添加启动文件" class="headerlink" title="2. 添加启动文件"></a>2. 添加启动文件</h6><p>使用pm2管理hexo服务，需要在代码根目录下创建<code>run.js</code>脚本文件，内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const &#123; exec &#125; = require(&apos;child_process&apos;)</span><br><span class="line">exec(&apos;hexo server -p 50003 -d &amp; &apos;,(error, stdout, stderr) =&gt; &#123;</span><br><span class="line">	if(error)&#123;</span><br><span class="line">                console.log(&apos;exec error: $&#123;error&#125;&apos;)</span><br><span class="line">                return</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(&apos;stdout: $&#123;stdout&#125;&apos;);</span><br><span class="line">        console.log(&apos;stderr: $&#123;stderr&#125;&apos;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h6 id="3-启动服务"><a href="#3-启动服务" class="headerlink" title="3. 启动服务"></a>3. 启动服务</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start ./run.js --name HexoBlog</span><br></pre></td></tr></table></figure>
+<h3 id="配置Nginx反向代理"><a href="#配置Nginx反向代理" class="headerlink" title="配置Nginx反向代理"></a>配置Nginx反向代理</h3><p>添加一个nginx配置文件<code>/etc/nginx/conf.d/my-domain.com.conf</code>，内容大致如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen 80;</span><br><span class="line">	server_name my-domain.com;</span><br><span class="line">	location /</span><br><span class="line">    &#123;</span><br><span class="line">    	proxy_pass http://127.0.0.1:50003;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>记得重载nginx服务使之生效。</p>
+<h1 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h1><h3 id="Hexo-admin-配置"><a href="#Hexo-admin-配置" class="headerlink" title="Hexo-admin 配置"></a>Hexo-admin 配置</h3><h5 id="1-登录权限"><a href="#1-登录权限" class="headerlink" title="1. 登录权限"></a>1. 登录权限</h5><p>为了保证安全，将hexo-admin部署到公网时，可以添加一组用户名/密码来验证用户权限。</p>
+<p>在本地通过hexo-admin界面提供的生成工具来生成相关参数，访问<a href="http://localhost:4000/admin/#/auth-setup，填写相关参数后，将下面自动生成的配置参数，拷贝至hexo的_config.yml配置文件中，" target="_blank" rel="noopener">http://localhost:4000/admin/#/auth-setup，填写相关参数后，将下面自动生成的配置参数，拷贝至hexo的_config.yml配置文件中，</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 其他hexo参数</span><br><span class="line">... ...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"># hexo-admin authentification 参数</span><br><span class="line">admin:</span><br><span class="line">  username: makeup1122</span><br><span class="line">  password_hash: xxxxxxxxxxx</span><br><span class="line">  secret: my super secret phrase</span><br></pre></td></tr></table></figure></p>
+<p>重启hexo服务后，再次访问<a href="http://localhost:4000/admin/就会出现登录界面。" target="_blank" rel="noopener">http://localhost:4000/admin/就会出现登录界面。</a></p>
+<h5 id="2-部署命令"><a href="#2-部署命令" class="headerlink" title="2. 部署命令"></a>2. 部署命令</h5><p>hexo-admin同时提供了hexo deploy的界面部署方式，访问<a href="http://localhost:4000/admin/#/deploy就可以看到。" target="_blank" rel="noopener">http://localhost:4000/admin/#/deploy就可以看到。</a></p>
+<p>使用方法：</p>
+<ol>
+<li>添加./hexo_deploy.sh部署脚本：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">hexo clean</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在_config.yml中添加admin.deployCommand配置项：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># hexo-admin authentification 参数</span><br><span class="line">admin:</span><br><span class="line">  username: makeup1122</span><br><span class="line">  password_hash: xxxxxxxxxxx</span><br><span class="line">  secret: my super secret phrase</span><br><span class="line">  deployCommand: /root/Hexo_blog/hexo_deploy.sh</span><br></pre></td></tr></table></figure>
+<p>deployCommand需使用绝对路径。</p>
+<h3 id="Github-Pages自定义域名问题"><a href="#Github-Pages自定义域名问题" class="headerlink" title="Github Pages自定义域名问题"></a>Github Pages自定义域名问题</h3><p>这个问题和hexo-admin没什么关系。</p>
+<p>使用自定义域名访问Github Pages，会在你的github pages库的根目录中添加一个CNAME文件，文件中保存了你设定的自定义域名。<br>只需要在Hexo_blog代码目录的source文件夹中创建CNAME文件并写入自定义域名即可。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pm2</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">github pages</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/22/Hexo-admin服务器部署/">展开全文 >></a>
         </p>
       
 
@@ -865,208 +1057,6 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-centos6-9UpdateMysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/01/centos6-9UpdateMysql/">centos6.9升级Mysql版本至5.7</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/01/centos6-9UpdateMysql/" class="archive-article-date">
-  	<time datetime="2018-03-01T08:41:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>最近习惯用Mysql5.7的Json字段类型了，而低于5.7版本的Mysql都不支持JSON字段类型。</p>
-<h1 id="升级Mysql"><a href="#升级Mysql" class="headerlink" title="升级Mysql"></a>升级Mysql</h1><h2 id="安装最新的Mysql的Yum源"><a href="#安装最新的Mysql的Yum源" class="headerlink" title="安装最新的Mysql的Yum源"></a>安装最新的Mysql的Yum源</h2><ol>
-<li>下载对应系统的mysql最新Yum源的rpm安装包，下载地址:<a href="https://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/repo/yum/</a></li>
-<li><p>安装步骤1的rpm包,这样就安装好了Mysql最新的Yum源地址库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># rpm -ivh mysql57-community-release-el6-11.noarch.rpmrpm ivh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看当前mysql版本和Yum源中最新的mysql版本(是否满足需求)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum list|grep mysql-community</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行升级命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum update mysql-server</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><h2 id="启动Mysqld失败"><a href="#启动Mysqld失败" class="headerlink" title="启动Mysqld失败"></a>启动Mysqld失败</h2><h3 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h3><p>mysql错误日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] Fatal error: mysql.user table is damaged. Please run mysql_upgrade.</span><br></pre></td></tr></table></figure></p>
-<p>根据提示执行mysql_upgrade，继续报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root]#  mysql_upgrade</span><br><span class="line">mysql_upgrade: Got error: 2002: Can&apos;t connect to local MySQL server through socket &apos;/var/lib/mysql/mysql.sock&apos; (2) while connecting to the MySQL server</span><br><span class="line">Upgrade process encountered error and will not continue.</span><br></pre></td></tr></table></figure></p>
-<h3 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h3><p>Mysql版本升级，却未执行mysql_upgrade所致。</p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
-<li><p>登陆服务器，编辑/etc/my.cnf文件，找到<code>[mysqld]</code>模块，如下添加<code>skip-grant-tables</code>并保存退出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[mysqld]</span><br><span class="line">skip-grant-tables</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动mysqld服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># service mysqld start</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行<code>mysql_upgrade</code>命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mysql_upgrade</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行完毕后，去掉(或注释)步骤1在/etc/my.cnf中添加的<code>skip-grant-tables</code>选项</p>
-</li>
-<li>重启mysqld服务：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># service mysqld restart</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/01/centos6-9UpdateMysql/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-install-google-bbr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/31/install-google-bbr/">CentOS安装Google BBR</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/31/install-google-bbr/" class="archive-article-date">
-  	<time datetime="2018-01-31T02:21:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
-<li>我的服务器是Vultr的东京机房VPS，系统是CentOS7 64bit版本。</li>
-<li>检查Linux内核版本。Google BBR要求linux内核最低版本为4.9,如果版本低于4.9请先升级内核版本。</li>
-</ol>
-<h3 id="安装Google-BBR"><a href="#安装Google-BBR" class="headerlink" title="安装Google BBR"></a>安装Google BBR</h3><ol>
-<li>复制并执行以下代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#&gt; echo &apos;net.core.default_qdisc=fq&apos; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">#&gt; echo &apos;net.ipv4.tcp_congestion_control=bbr&apos; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">#&gt; sysctl -p</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>执行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@goingmerry ~]# uname -sr</span><br><span class="line">Linux 4.15.0-1.el7.elrepo.x86_64</span><br><span class="line">[root@goingmerry ~]# echo &apos;net.core.default_qdisc=fq&apos; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">net.core.default_qdisc=fq</span><br><span class="line">[root@goingmerry ~]# echo &apos;net.ipv4.tcp_congestion_control=bbr&apos; | sudo tee -a /etc/sysctl.conf</span><br><span class="line">net.ipv4.tcp_congestion_control=bbr</span><br><span class="line">[root@goingmerry ~]# sysctl -p</span><br><span class="line">net.ipv6.conf.all.accept_ra = 2</span><br><span class="line">net.ipv6.conf.eth0.accept_ra = 2</span><br><span class="line">net.core.default_qdisc = fq</span><br><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br><span class="line">[root@goingmerry ~]#</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>检查安装是否成功<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@goingmerry ~]# sysctl net.ipv4.tcp_available_congestion_control</span><br><span class="line">net.ipv4.tcp_available_congestion_control = reno cubic bbr</span><br><span class="line">[root@goingmerry ~]# sysctl -n net.ipv4.tcp_congestion_control</span><br><span class="line">bbr</span><br><span class="line">[root@goingmerry ~]# lsmod | grep bbr</span><br><span class="line">tcp_bbr                20480  5</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h5 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h5><ol>
-<li><a href="https://github.com/google/bbr" target="_blank" rel="noopener">Github:google/bbr</a></li>
-<li><a href="http://vultr.aicnm.com/CentOS%E5%AE%89%E8%A3%85Google-BBR%E5%8A%A0%E9%80%9F%E5%B7%A5%E5%85%B7%E5%9B%BE%E6%96%87%E6%95%99%E7%A8%8B/" target="_blank" rel="noopener">参考文章</a></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">centos</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">google</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/31/install-google-bbr/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1156,11 +1146,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jade</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">utf8</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">github pages</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1172,27 +1194,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1208,7 +1210,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1216,19 +1222,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">deploy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1256,14 +1262,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">photo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tmux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">phpmailer</a>
               </li>
              
@@ -1272,11 +1270,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color1">photo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color5">tmux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1288,11 +1286,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jade</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
             
             <div class="clearfix"></div>

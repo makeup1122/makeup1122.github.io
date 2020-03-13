@@ -29,19 +29,6 @@
     }
   </style>
   
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-86439875-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
 
   
 
@@ -92,6 +79,10 @@ ga('send', 'pageview');
 		        
 					<a class="mail" target="_blank" href="mailto:makeup1123@163.com" title="mail"><i class="icon-mail"></i></a>
 		        
+					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+		        
+					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+		        
 			</div>
 		</nav>
 	</header>		
@@ -131,6 +122,10 @@ ga('send', 'pageview');
 			        
 						<a class="mail" target="_blank" href="mailto:makeup1123@163.com" title="mail"><i class="icon-mail"></i></a>
 			        
+						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+			        
 				</div>
 			</nav>
 
@@ -156,6 +151,263 @@ ga('send', 'pageview');
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-nginx-ueditor-issue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/10/nginx-ueditor-issue/">Nginx问题记录</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/10/nginx-ueditor-issue/" class="archive-article-date">
+  	<time datetime="2017-07-10T07:10:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在nginx使用过程中，会有很多问题，在此做记录。</p>
+<h3 id="由于请求header过大导致的502错误"><a href="#由于请求header过大导致的502错误" class="headerlink" title="由于请求header过大导致的502错误"></a>由于请求header过大导致的<strong>502</strong>错误</h3><p>测试在一个上传附件图片的功能时，每次上传一个附件会在cookie里缓存附件的路径，当缓存的内容超过1KB时，再次请求后台即会发生502错误。<br>nginx的错误日志如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[error] 9892#0: *79051 upstream sent too big header while reading response header from upstream</span><br></pre></td></tr></table></figure></p>
+<p>原因是nginx配置项中的<code>proxy_buffer_size</code>参数默认是1KB，请求头部内容超过这个默认值就会报错显示502，在配置文件中添加或修改相应的数值即可。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ueditor</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/10/nginx-ueditor-issue/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-htaccess" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/htaccess/">学习 .htaccess中的Rewirte</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/01/htaccess/" class="archive-article-date">
+  	<time datetime="2017-03-01T07:23:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用.htaccess的Rewrite规则，需开启apache的rewrite模块。</p>
+<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><ul>
+<li><strong>RewriteEngine <em>on|off</em> </strong><br>  关闭或者打开Rewirte功能</li>
+<li><strong>RewriteBase <em>基准路径</em> </strong><br>  设置目录级重写的基准URL</li>
+<li><strong>RewriteCond <em>字符串参数(Pattern)</em>    <em>匹配参数</em> </strong><br>  定义重写发生的条件。仅当设定的条件满足时，才会执行后面RewriteCond命令。</li>
+<li><strong>RewriteRule <em>匹配参数</em> <em>替换参数</em> <em>[flags]</em> </strong><br>为RewirteEngine定义重写规则。<br>第三个<em>flags</em>参数为可选参数,格式为逗号分隔的一个数组，常用内容:<ol>
+<li>‘nocase|NC’ (no case) 忽略大小写</li>
+<li>‘passthrough|PT’    传递参数到下一个规则,主要是为了给*Alias, ScriptAlias, Redirect等指令传递参数。</li>
+<li>‘qsappend|QSA’ </li>
+<li>‘last|L’ 最后一条规则，执行完成立即停止Rewirte。</li>
+<li>‘redirect|R [=code]’ 跳转的状态码，默认位302(暂时性转移Temporarily Moved)。</li>
+</ol>
+</li>
+</ul>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
+<li>去掉php中的index.php<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">    RewriteEngine On</span><br><span class="line">    RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">    RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">    RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure></li>
+<li>匹配手机等移动端<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">    RewriteEngine On</span><br><span class="line">    RewriteCond %&#123;HTTP_USER_AGENT&#125; &quot;android|blackberry|googlebot-mobile|iemobile|ipad|iphone|ipod|opera mobile|palmos|webos&quot; [NC]</span><br><span class="line">    RewriteRule ^(.*)$ /mobile/$1 [L,R=302]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="其他用到过的指令"><a href="#其他用到过的指令" class="headerlink" title="其他用到过的指令"></a>其他用到过的指令</h3><ul>
+<li><strong>ErrorDocument <em>错误码</em> <em>错误页面文档路径</em></strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ErrorDocument 403 /error_page/zjn403.html</span><br><span class="line">ErrorDocument 404 /error_page/zjn404.html</span><br></pre></td></tr></table></figure></li>
+<li><strong>Options +FollowSymlinks -Multiviews</strong><br>Options指令用于启用/关闭某些特性。<code>+FollowSymLinks</code>表示服务器允许在此目录中使用符号连接。<code>-Multiviews</code>不允许使用mod_negotiation提供内容协商的”多重视图”。<code>Options FollowSymLinks</code>必须伴随<code>RewriteEngine On</code>出现。<br>参考:<a href="http://man.chinaunix.net/newsoft/Apache2.2_chinese_manual/mod/directives.html" target="_blank" rel="noopener">http://man.chinaunix.net/newsoft/Apache2.2_chinese_manual/mod/directives.html</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">apache</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/01/htaccess/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-php-quotation-mark" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/11/php-quotation-mark/">PHP中的引号问题</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/11/php-quotation-mark/" class="archive-article-date">
+  	<time datetime="2017-02-11T07:40:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#160; &#160; &#160; &#160;最近用php模拟telnet连接路由器发送指令时，fwrite发送指令后，再次发送回车符(“\n”)和换行符(“\r”)执行当前指令时，并没有按照预想的产生任何效果：</p>
+<pre><code>fwrite($socket_handle,&apos;sys reboot&apos;);
+fwrite($socket_handle,&apos;\r\n&apos;);
+</code></pre><p>&#160; &#160; &#160; &#160;查询了一番才发现，php代码中用单引号包含的内容如果含有转义字符，那么转义字符不会被转义，而是当作字符串被处理。换成双引号即可。另外单双引号的区别就是，在单引号内的变量不会被解释执行，其他都一样，使用时保持一致即可。</p>
+<ol>
+<li><a href="http://www.cnblogs.com/yunf/archive/2011/04/20/2021830.html" target="_blank" rel="noopener">回车符和换行符的区别</a></li>
+<li><a href="http://baike.baidu.com/link?url=gOWNyWAZ5bkGwrbA1koAZ6Z0cDNjXvn7HyDOykHR8y-QMzS0j3RriKRfvtCTfFTDi4ZJ_z8jVKDcL_5c05Sl_XnHt82LB7Yul4Zz9pLKHr7GUm8xRuTcRvx7Rph3KcGh" target="_blank" rel="noopener">常用转义字符</a></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/11/php-quotation-mark/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-VisualSVN-hooks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -772,292 +1024,6 @@ admin@172.16.5.249&apos;s password:
 
 
   
-    <article id="post-php-ini" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/07/php-ini/">php.ini配置文件</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/07/php-ini/" class="archive-article-date">
-  	<time datetime="2016-11-07T08:53:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近做服务器迁移时，忘记在新的服务器上配置php的<code>upload_max_filesize</code>配置项，导致前台上传超过默认值(2MB)的附件时，会发生错误从而无法上传。<br>很久之前配置过这个选项，而且遇到了很多问题，但未进行记录，这次记录一下。</p>
-<h3 id="找到php-ini文件"><a href="#找到php-ini文件" class="headerlink" title="找到php.ini文件"></a>找到php.ini文件</h3><ul>
-<li>编译安装php时，<code>&#39;—with-config-file-path</code>选项可以指定<code>php.ini</code>文件的搜索路径，默认为<code>PREFIX/lib</code>。</li>
-<li><p>官方手册中，加载php.ini的搜索路径如下(按顺序);</p>
-<ul>
-<li>SAPI 模块所指定的位置（Apache 2 中的 PHPIniDir 指令，CGI 和 CLI 中的 -c 命令行选项，NSAPI 中的 php_ini 参数，THTTPD 中的 PHP_INI_PATH 环境变量）。<br>PHPRC 环境变量。在 PHP 5.2.0 之前，其顺序在以下提及的注册表键值之后。</li>
-<li>自 PHP 5.2.0 起，可以为不同版本的 PHP 指定不同的 php.ini 文件位置。将以下面的顺序检查注册表目录：[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y.z]，[HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y] 和 [HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x]，其中的 x，y 和 z 指的是 PHP 主版本号，次版本号和发行批次。如果在其中任何目录下的 IniFilePath 有键值，则第一个值将被用作 php.ini 的位置（仅适用于 windows）。</li>
-<li>[HKEY_LOCAL_MACHINE\SOFTWARE\PHP] 内 IniFilePath 的值（Windows 注册表位置）。</li>
-<li><strong>当前工作目录（对于 CLI）。</strong></li>
-<li>web 服务器目录（对于 SAPI 模块）或 PHP 所在目录（Windows 下其它情况）。</li>
-<li>Windows 目录（C:\windows 或 C:\winnt），或 –with-config-file-path 编译时选项指定的位置。</li>
-</ul>
-</li>
-<li><p>无论是php命令还是Php-fpm命令：</p>
-<ul>
-<li>都可以通过<code>-i</code>选项打印所加载的<code>php.ini</code>内容，没找到<code>php.ini</code>时，全部采用默认配置。可以参考php源码目录中的<code>php.ini-production</code>和<code>php.ini-development</code></li>
-<li>都可以通过<code>-c</code>选项在CLI启动时手动指定php.ini的位置或者文件名称。</li>
-</ul>
-</li>
-<li>通过<code>php --ini</code>命令查询加载的php.ini文件。奇怪的是当我执行<code>php --ini</code>后，得到的结果是：  </li>
-</ul>
-<pre><code>Configuration File (php.ini) Path: /usr/local/lib
-</code></pre><p>但是，我把php.ini文件放到这个/usr/local/lib目录下，再次执行<code>php --ini</code>时，依旧无法找到，所以我只能按照官方文档的方式，放到当前工作目录，即与Php命令放在同一目录下。</p>
-<h3 id="修改php-ini文件"><a href="#修改php-ini文件" class="headerlink" title="修改php.ini文件"></a>修改php.ini文件</h3><p>修改附件上传限制，可能需要修改的参数：</p>
-<pre><code>upload_max_filesize = 8M
-post_max_size = 8M
-</code></pre><h3 id="生效"><a href="#生效" class="headerlink" title="生效"></a>生效</h3><p>如果是使用的php-fpm，则直接reload即可</p>
-<pre><code>#&gt; service php-fpm reload
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/07/php-ini/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-github-webhooks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/28/github-webhooks/">git-webhooks</a>
-    </h1>
-  
-
-        
-        <a href="/2016/10/28/github-webhooks/" class="archive-article-date">
-  	<time datetime="2016-10-28T09:03:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>git的webhooks是个好东西呀，怎么没早点发现!github和git.oschina 也早已都支持了，看来是我out了。<br>原理是当设置了某个线上git代码库的webhooks后，当代码库发生指定事件(比如push、pull、create、delete等等)时，就会向指定的URL链接发起请求(POST)，<br>这样就可以发挥想象力做很多事件，最常见的应该就是当有push操作时，同步更新线上的代码。省去了登录线上服务器，进行pull代码等重复操作。<br>下文皆以github为例子，其他代码托管网站应该都类似的。</p>
-<h3 id="添加webhooks"><a href="#添加webhooks" class="headerlink" title="添加webhooks"></a>添加webhooks</h3><ol>
-<li>参数<br> <code>Payload URL</code>是必填参数，即发生指定事件时要通知的链接。<br> <code>Content type</code> 发送请求的内容类型，有json格式和form data两种。<br> <code>secret</code> 自定义密钥，被加载请求中一并发给<code>Payload URL</code>，保存在header的X-Hub-Signature中，可以用作验证请求。</li>
-<li>可用事件:<a href="https://developer.github.com/webhooks/#events" target="_blank" rel="noopener">https://developer.github.com/webhooks/#events</a><h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3>添加完webhooks后，hook已经准备好了，但服务器端的配置才是最重要的。<h4 id="ngrok"><a href="#ngrok" class="headerlink" title="ngrok"></a>ngrok</h4>这个是github官网介绍的一个小工具，用来给内网用户设置一个外网访问地址的，用法也很简单，<a href="https://ngrok.com/download" target="_blank" rel="noopener">下载</a>ngrok程序，只有一个exe文件，直接双击就可以进入命令行，执行如下命令即可启动服务：<br> <code>ngrok http 80</code><br>启动后可以登录<a href="http://localhost:4040" target="_blank" rel="noopener">http://localhost:4040</a> 就可以看到生成的外网URL链接，还可以看到请求和响应的内容。<br>ngrok的1.0版本是免费的，如过注册了ngrok的用户，还可以生成安全口令、创建TCP连接，开启多通道等等功能。<br>但是ngrok毕竟是国外的，服务很不稳定，原因你懂得。但是1.0版本是开源的，国内友人仿照版本，可自行查找。</li>
-</ol>
-<h4 id="node-js版服务端测试代码"><a href="#node-js版服务端测试代码" class="headerlink" title="node.js版服务端测试代码"></a>node.js版服务端测试代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line">var child_process = require(&quot;child_process&quot;);</span><br><span class="line">http.createServer(function(req, res) &#123;</span><br><span class="line">    var post_data = &apos;&apos;;</span><br><span class="line">    req.on(&apos;data&apos;, function(chunk) &#123;</span><br><span class="line">        post_data += chunk;</span><br><span class="line">    &#125;);</span><br><span class="line">    req.on(&apos;end&apos;, function() &#123;</span><br><span class="line">        var result = child_process.execSync(&apos;git pull origin master&apos;);</span><br><span class="line">    &#125;);</span><br><span class="line">    res.writeHead(200, &#123; &apos;Content-Type&apos;: &apos;text/plain&apos; &#125;);</span><br><span class="line">    res.end(&apos;get push post!&apos;);</span><br><span class="line">&#125;).listen(8888);</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-<h4 id="第三方工具"><a href="#第三方工具" class="headerlink" title="第三方工具"></a>第三方工具</h4><p>npm上有很多github Webhooks的第三方的中间件，可以拿来直接用的。</p>
-<p>参考文档:<a href="https://developer.github.com/webhooks/" target="_blank" rel="noopener">https://developer.github.com/webhooks/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hooks</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/28/github-webhooks/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ssh动态端口转发命令解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/27/ssh动态端口转发命令解析/">ssh动态端口转发命令解析</a>
-    </h1>
-  
-
-        
-        <a href="/2016/10/27/ssh动态端口转发命令解析/" class="archive-article-date">
-  	<time datetime="2016-10-27T14:38:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="命令全貌："><a href="#命令全貌：" class="headerlink" title="命令全貌："></a>命令全貌：</h4><pre><code>ssh -qfTnN -D 0.0.0.0:1080 SSH_SERVER -l user -o ServerAliveInterval=60
-</code></pre><h4 id="参数说明："><a href="#参数说明：" class="headerlink" title="参数说明："></a>参数说明：</h4><ul>
-<li><code>-q</code>   静默模式(Quiet mode).</li>
-<li><code>-f</code>    将SSH命令变为后台服务(Requests ssh to go to background just before command execution).</li>
-<li><code>-T</code>  不启用为终端，即不占用 shell 了(Disable pseudo-tty allocation).</li>
-<li><code>-n</code>  用/dev/null来当ssh的输入，阻止ssh读取本地的标准输入内容(Redirects stdin from /dev/null (actually, prevents reading from stdin). This must be used when ssh is run in the background.).</li>
-<li><code>-N</code>  Do not execute a remote command. This is useful for just forwarding ports (protocol version 2 only).</li>
-<li><code>-D</code>  动态端口转发，在指定端口建立基于SOCKs4和SOCKs5协议的SOCKS服务。默认绑定IP地址为”localhost”，0.0.0.0或者”*”表示接受所以地址的请求。</li>
-<li><code>SSH_SERVER</code>  ssh服务器地址</li>
-<li><code>-l</code>  指定登录远程服务器(SSH_SERVER )的用户名</li>
-<li><code>-o</code>  参数选项(以配置文件的形式)。</li>
-<li><code>ServerAliveInterval=60</code>   number of seconds that the client will wait before sending a null packet to the server (to keep the connection alive).默认为0，设置为0即关闭该选项。<br>  其他类似的相关选项还有：<ul>
-<li><code>ClientAliveInterval</code> 60 ＃server每隔60秒发送一次请求给client，然后client响应，从而保持连接</li>
-<li><code>ClientAliveCountMax</code> 3 ＃server发出请求后，客户端没有响应得次数达到3，就自动断开连接，正常情况下，client不会不响应</li>
-<li><code>ServerAliveInterval</code> 60 ＃client每隔60秒发送一次请求给server，然后server响应，从而保持连接</li>
-<li><code>ServerAliveCountMax</code> 3  ＃client发出请求后，服务器端没有响应得次数达到3，就自动断开连接，正常情况下，server不会不响应</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">synology</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/27/ssh动态端口转发命令解析/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1147,11 +1113,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jade</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">utf8</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pm2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">github pages</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1163,27 +1161,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1199,7 +1177,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1207,19 +1189,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">deploy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1247,14 +1229,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">photo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tmux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">phpmailer</a>
               </li>
              
@@ -1263,11 +1237,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color1">photo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color5">tmux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1279,11 +1253,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jade</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
             
             <div class="clearfix"></div>
