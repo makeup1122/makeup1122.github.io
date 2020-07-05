@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://makeup1122.github.io">
-  <title>Centos7防火墙设置命令 | makeup1122</title>
+  <title>Centos7防火墙设置命令 | makeup1122&#39;s note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CentOS 7.x的firewall 添加新的防火墙端口配置 1#&amp;gt; firewall-cmd --zone=public --add-port=99999/tcp --permanent  生效配置 1#&amp;gt; firewall-cmd --reload  检查配置 1#&amp;gt; firewall-cmd --list-port  删除某个端口配置 #&amp;gt; firewall-cm">
-<meta name="keywords" content="shadowsocks,ssh">
+  <meta name="description" content="CentOS 7.x的firewall 添加新的防火墙端口配置1#&gt; firewall-cmd --zone&#x3D;public --add-port&#x3D;99999&#x2F;tcp --permanent 生效配置1#&gt; firewall-cmd --reload 检查配置1#&gt; firewall-cmd --list-port 删除某个端口配置#&gt; fir">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Centos7防火墙设置命令">
 <meta property="og:url" content="http://makeup1122.github.io/2018/01/26/shadowsocksOnVultr/index.html">
-<meta property="og:site_name" content="makeup1122">
-<meta property="og:description" content="CentOS 7.x的firewall 添加新的防火墙端口配置 1#&amp;gt; firewall-cmd --zone=public --add-port=99999/tcp --permanent  生效配置 1#&amp;gt; firewall-cmd --reload  检查配置 1#&amp;gt; firewall-cmd --list-port  删除某个端口配置 #&amp;gt; firewall-cm">
+<meta property="og:site_name" content="makeup1122&#39;s note">
+<meta property="og:description" content="CentOS 7.x的firewall 添加新的防火墙端口配置1#&gt; firewall-cmd --zone&#x3D;public --add-port&#x3D;99999&#x2F;tcp --permanent 生效配置1#&gt; firewall-cmd --reload 检查配置1#&gt; firewall-cmd --list-port 删除某个端口配置#&gt; fir">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2020-03-13T08:11:03.901Z">
+<meta property="article:published_time" content="2018-01-26T14:40:41.000Z">
+<meta property="article:modified_time" content="2020-03-13T08:11:03.901Z">
+<meta property="article:author" content="makeup1122">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="shadowsocks">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Centos7防火墙设置命令">
-<meta name="twitter:description" content="CentOS 7.x的firewall 添加新的防火墙端口配置 1#&amp;gt; firewall-cmd --zone=public --add-port=99999/tcp --permanent  生效配置 1#&amp;gt; firewall-cmd --reload  检查配置 1#&amp;gt; firewall-cmd --list-port  删除某个端口配置 #&amp;gt; firewall-cm">
   
-    <link rel="alternative" href="/atom.xml" title="makeup1122" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="makeup1122&#39;s note" type="application/atom+xml">
   
   
     <link rel="icon" href="https://nas.goingmerry.cn/favicon.ico">
@@ -37,8 +38,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -168,19 +169,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="CentOS-7-x的firewall"><a href="#CentOS-7-x的firewall" class="headerlink" title="CentOS 7.x的firewall"></a>CentOS 7.x的firewall</h2><ol>
-<li><p>添加新的防火墙端口配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; firewall-cmd --zone=public --add-port=99999/tcp --permanent</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>生效配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>检查配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; firewall-cmd --list-port</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除某个端口配置</p>
-<pre><code>#&gt; firewall-cmd --zone=public --remove-port=99999/tcp --permanent
-</code></pre><p>记得要执行reload生效修改。</p>
-</li>
+<li>添加新的防火墙端口配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; firewall-cmd --zone&#x3D;public --add-port&#x3D;99999&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure></li>
+<li>生效配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; firewall-cmd --reload</span><br></pre></td></tr></table></figure></li>
+<li>检查配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; firewall-cmd --list-port</span><br></pre></td></tr></table></figure></li>
+<li>删除某个端口配置<pre><code>#&gt; firewall-cmd --zone=public --remove-port=99999/tcp --permanent
+</code></pre>记得要执行reload生效修改。</li>
 </ol>
 
       
@@ -195,11 +188,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">shadowsocks</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">shadowsocks</a>
         		</li>
       		
 		</ul>
@@ -414,14 +407,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jade</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -431,6 +416,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hapi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -446,14 +443,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
@@ -462,7 +451,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,14 +479,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">synology</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -502,18 +491,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
@@ -522,11 +499,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ueditor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">errors</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,11 +551,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>

@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://makeup1122.github.io">
-  <title>使用ssh config配置文件 | makeup1122</title>
+  <title>使用ssh config配置文件 | makeup1122&#39;s note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ssh的config配置参数说明位置 ～/.ssh/config 用户配置文件。 /etc/ssh/ssh_config 系统配置文件。  ssh读取配置文件的优先级为：  命令行参数。 用户配置文件(~/.ssh/config)。 系统配置文件(/etc/ssh/ssh_config)。一般格式123456789101112Host *    	ControlMaster auto    	Co">
-<meta name="keywords" content="linux,ssh">
+  <meta name="description" content="ssh的config配置参数说明位置 ～&#x2F;.ssh&#x2F;config 用户配置文件。 &#x2F;etc&#x2F;ssh&#x2F;ssh_config 系统配置文件。  ssh读取配置文件的优先级为：  命令行参数。 用户配置文件(~&#x2F;.ssh&#x2F;config)。 系统配置文件(&#x2F;etc&#x2F;ssh&#x2F;ssh_config)。一般格式123456789101112Host *    	ControlMaster auto    	Co">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用ssh config配置文件">
 <meta property="og:url" content="http://makeup1122.github.io/2018/01/24/ssh-config/index.html">
-<meta property="og:site_name" content="makeup1122">
-<meta property="og:description" content="ssh的config配置参数说明位置 ～/.ssh/config 用户配置文件。 /etc/ssh/ssh_config 系统配置文件。  ssh读取配置文件的优先级为：  命令行参数。 用户配置文件(~/.ssh/config)。 系统配置文件(/etc/ssh/ssh_config)。一般格式123456789101112Host *    	ControlMaster auto    	Co">
+<meta property="og:site_name" content="makeup1122&#39;s note">
+<meta property="og:description" content="ssh的config配置参数说明位置 ～&#x2F;.ssh&#x2F;config 用户配置文件。 &#x2F;etc&#x2F;ssh&#x2F;ssh_config 系统配置文件。  ssh读取配置文件的优先级为：  命令行参数。 用户配置文件(~&#x2F;.ssh&#x2F;config)。 系统配置文件(&#x2F;etc&#x2F;ssh&#x2F;ssh_config)。一般格式123456789101112Host *    	ControlMaster auto    	Co">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2018-05-07T10:13:24.764Z">
+<meta property="article:published_time" content="2018-01-24T13:44:21.000Z">
+<meta property="article:modified_time" content="2018-05-07T10:13:24.764Z">
+<meta property="article:author" content="makeup1122">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用ssh config配置文件">
-<meta name="twitter:description" content="ssh的config配置参数说明位置 ～/.ssh/config 用户配置文件。 /etc/ssh/ssh_config 系统配置文件。  ssh读取配置文件的优先级为：  命令行参数。 用户配置文件(~/.ssh/config)。 系统配置文件(/etc/ssh/ssh_config)。一般格式123456789101112Host *    	ControlMaster auto    	Co">
   
-    <link rel="alternative" href="/atom.xml" title="makeup1122" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="makeup1122&#39;s note" type="application/atom+xml">
   
   
     <link rel="icon" href="https://nas.goingmerry.cn/favicon.ico">
@@ -37,8 +38,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -175,10 +176,10 @@
 <ol>
 <li>命令行参数。</li>
 <li>用户配置文件(~/.ssh/config)。</li>
-<li>系统配置文件(/etc/ssh/ssh_config)。<h3 id="一般格式"><a href="#一般格式" class="headerlink" title="一般格式"></a>一般格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">    	ControlMaster auto</span><br><span class="line">    	ControlPath ~/.ssh/%h-%p-%r</span><br><span class="line">    	ControlPersist yes</span><br><span class="line">Host server-alias</span><br><span class="line">    	HostName        129.12.12.122</span><br><span class="line">    	Port            22</span><br><span class="line">    	User            root</span><br><span class="line">        IdentityFile    ~/mykey/SSH/id_rsa</span><br><span class="line">Host text.com</span><br><span class="line">	    Port	22222</span><br><span class="line">	    User	text</span><br></pre></td></tr></table></figure>
-</li>
+<li>系统配置文件(/etc/ssh/ssh_config)。<h3 id="一般格式"><a href="#一般格式" class="headerlink" title="一般格式"></a>一般格式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">    	ControlMaster auto</span><br><span class="line">    	ControlPath ~&#x2F;.ssh&#x2F;%h-%p-%r</span><br><span class="line">    	ControlPersist yes</span><br><span class="line">Host server-alias</span><br><span class="line">    	HostName        129.12.12.122</span><br><span class="line">    	Port            22</span><br><span class="line">    	User            root</span><br><span class="line">        IdentityFile    ~&#x2F;mykey&#x2F;SSH&#x2F;id_rsa</span><br><span class="line">Host text.com</span><br><span class="line">	    Port	22222</span><br><span class="line">	    User	text</span><br></pre></td></tr></table></figure>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3></li>
 </ol>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><h5 id="普通参数"><a href="#普通参数" class="headerlink" title="普通参数"></a>普通参数</h5><ul>
+<h5 id="普通参数"><a href="#普通参数" class="headerlink" title="普通参数"></a>普通参数</h5><ul>
 <li>Host ：描述参数的作用范围。</li>
 <li>HostName ：ip或域名。当Host参数已经指明时可以不用指定该参数。</li>
 <li>User ：用户名。</li>
@@ -214,7 +215,7 @@
 <li>PermitLocalCommand ：运行本地执行命令。</li>
 <li>RemoteCommand ：连接服务器成功时在服务器端执行的命令。比如启动<code>tmux</code>。</li>
 </ul>
-<h3 id="TOKEN"><a href="#TOKEN" class="headerlink" title="TOKEN"></a>TOKEN</h3><p>Arguments to some keywords can make use of tokens, which are expanded at runtime:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">%%    A literal `%&apos;.</span><br><span class="line">%C    Shorthand for %l%h%p%r.</span><br><span class="line">%d    Local user&apos;s home directory.</span><br><span class="line">%h    The remote hostname.</span><br><span class="line">%i    The local user ID.</span><br><span class="line">%L    The local hostname.</span><br><span class="line">%l    The local hostname, including the domain name.</span><br><span class="line">%n    The original remote hostname, as given on the command line.</span><br><span class="line">%p    The remote port.</span><br><span class="line">%r    The remote username.</span><br><span class="line">%u    The local username.</span><br></pre></td></tr></table></figure></p>
+<h3 id="TOKEN"><a href="#TOKEN" class="headerlink" title="TOKEN"></a>TOKEN</h3><p>Arguments to some keywords can make use of tokens, which are expanded at runtime:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">%%    A literal &#96;%&#39;.</span><br><span class="line">%C    Shorthand for %l%h%p%r.</span><br><span class="line">%d    Local user&#39;s home directory.</span><br><span class="line">%h    The remote hostname.</span><br><span class="line">%i    The local user ID.</span><br><span class="line">%L    The local hostname.</span><br><span class="line">%l    The local hostname, including the domain name.</span><br><span class="line">%n    The original remote hostname, as given on the command line.</span><br><span class="line">%p    The remote port.</span><br><span class="line">%r    The remote username.</span><br><span class="line">%u    The local username.</span><br></pre></td></tr></table></figure></p>
 <ol>
 <li>Match exec accepts the tokens %%, %h, %L, %l, %n, %p, %r, and %u.</li>
 <li>CertificateFile accepts the tokens %%, %d, %h, %l, %r, and %u.</li>
@@ -242,11 +243,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -461,14 +462,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jade</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -478,6 +471,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hapi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,14 +498,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
@@ -509,7 +506,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,14 +534,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">synology</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -549,18 +546,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
@@ -569,11 +554,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ueditor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">errors</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,11 +606,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>

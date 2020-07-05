@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://makeup1122.github.io">
-  <title>升级CentOS7的Linux版本至最新稳定版 | makeup1122</title>
+  <title>升级CentOS7的Linux版本至最新稳定版 | makeup1122&#39;s note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="添加ELRepo第三方仓库ELRepo（ELRepo是什么？）。安装ELRepo仓库的命令123456789[root@goingmerry ~]# rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org[root@goingmerry ~]# rpm -Uvh http://www.elrepo.org/elrepo-release-">
-<meta name="keywords" content="linux,centos">
+  <meta name="description" content="添加ELRepo第三方仓库ELRepo（ELRepo是什么？）。安装ELRepo仓库的命令123456789[root@goingmerry ~]# rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org[root@goingmerry ~]# rpm -Uvh http:&#x2F;&#x2F;www.e">
 <meta property="og:type" content="article">
 <meta property="og:title" content="升级CentOS7的Linux版本至最新稳定版">
 <meta property="og:url" content="http://makeup1122.github.io/2018/01/31/update-linux-version/index.html">
-<meta property="og:site_name" content="makeup1122">
-<meta property="og:description" content="添加ELRepo第三方仓库ELRepo（ELRepo是什么？）。安装ELRepo仓库的命令123456789[root@goingmerry ~]# rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org[root@goingmerry ~]# rpm -Uvh http://www.elrepo.org/elrepo-release-">
+<meta property="og:site_name" content="makeup1122&#39;s note">
+<meta property="og:description" content="添加ELRepo第三方仓库ELRepo（ELRepo是什么？）。安装ELRepo仓库的命令123456789[root@goingmerry ~]# rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org[root@goingmerry ~]# rpm -Uvh http:&#x2F;&#x2F;www.e">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2018-05-07T10:13:24.764Z">
+<meta property="article:published_time" content="2018-01-31T01:28:13.000Z">
+<meta property="article:modified_time" content="2018-05-07T10:13:24.764Z">
+<meta property="article:author" content="makeup1122">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="centos">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="升级CentOS7的Linux版本至最新稳定版">
-<meta name="twitter:description" content="添加ELRepo第三方仓库ELRepo（ELRepo是什么？）。安装ELRepo仓库的命令123456789[root@goingmerry ~]# rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org[root@goingmerry ~]# rpm -Uvh http://www.elrepo.org/elrepo-release-">
   
-    <link rel="alternative" href="/atom.xml" title="makeup1122" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="makeup1122&#39;s note" type="application/atom+xml">
   
   
     <link rel="icon" href="https://nas.goingmerry.cn/favicon.ico">
@@ -37,8 +38,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -167,18 +168,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="添加ELRepo第三方仓库ELRepo（ELRepo是什么？）。"><a href="#添加ELRepo第三方仓库ELRepo（ELRepo是什么？）。" class="headerlink" title="添加ELRepo第三方仓库ELRepo（ELRepo是什么？）。"></a>添加ELRepo第三方仓库<a href="http://elrepo.org" target="_blank" rel="noopener">ELRepo</a>（ELRepo是什么？）。</h3><h3 id="安装ELRepo仓库的命令"><a href="#安装ELRepo仓库的命令" class="headerlink" title="安装ELRepo仓库的命令"></a>安装ELRepo仓库的命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@goingmerry ~]# rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</span><br><span class="line">[root@goingmerry ~]# rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm (external link)</span><br><span class="line">-bash: syntax error near unexpected token `(&apos;</span><br><span class="line">[root@goingmerry ~]# rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm</span><br><span class="line">Retrieving http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm</span><br><span class="line">Preparing...                          ################################# [100%]</span><br><span class="line">Updating / installing...</span><br><span class="line">   1:elrepo-release-7.0-3.el7.elrepo  ################################# [100%]</span><br><span class="line">[root@goingmerry ~]#</span><br></pre></td></tr></table></figure>
-<h3 id="查看ELRepo仓库中可用内核版本信息"><a href="#查看ELRepo仓库中可用内核版本信息" class="headerlink" title="查看ELRepo仓库中可用内核版本信息"></a>查看ELRepo仓库中可用内核版本信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@goingmerry ~]#  yum --disablerepo=&quot;*&quot; --enablerepo=&quot;elrepo-kernel&quot; list available</span><br><span class="line">Loaded plugins: fastestmirror</span><br><span class="line">elrepo-kernel                                                                                                                                                                   | 2.9 kB  00:00:00</span><br><span class="line">elrepo-kernel/primary_db                                                                                                                                                        | 1.7 MB  00:00:01</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"> * elrepo-kernel: ftp.yz.yamagata-u.ac.jp</span><br><span class="line">Available Packages</span><br><span class="line">kernel-lt.x86_64                                                                                   4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-lt-devel.x86_64                                                                             4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-lt-doc.noarch                                                                               4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-lt-headers.x86_64                                                                           4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-lt-tools.x86_64                                                                             4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-lt-tools-libs.x86_64                                                                        4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-lt-tools-libs-devel.x86_64                                                                  4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-ml.x86_64                                                                                   4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">kernel-ml-devel.x86_64                                                                             4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">kernel-ml-doc.noarch                                                                               4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">kernel-ml-headers.x86_64                                                                           4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">kernel-ml-tools.x86_64                                                                             4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">kernel-ml-tools-libs.x86_64                                                                        4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">kernel-ml-tools-libs-devel.x86_64                                                                  4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">perf.x86_64                                                                                        4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">python-perf.x86_64                                                                                 4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">[root@goingmerry ~]#</span><br></pre></td></tr></table></figure>
+        <h3 id="添加ELRepo第三方仓库ELRepo（ELRepo是什么？）。"><a href="#添加ELRepo第三方仓库ELRepo（ELRepo是什么？）。" class="headerlink" title="添加ELRepo第三方仓库ELRepo（ELRepo是什么？）。"></a>添加ELRepo第三方仓库<a href="http://elrepo.org" target="_blank" rel="noopener">ELRepo</a>（ELRepo是什么？）。</h3><h3 id="安装ELRepo仓库的命令"><a href="#安装ELRepo仓库的命令" class="headerlink" title="安装ELRepo仓库的命令"></a>安装ELRepo仓库的命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@goingmerry ~]# rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org</span><br><span class="line">[root@goingmerry ~]# rpm -Uvh http:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.0-3.el7.elrepo.noarch.rpm (external link)</span><br><span class="line">-bash: syntax error near unexpected token &#96;(&#39;</span><br><span class="line">[root@goingmerry ~]# rpm -Uvh http:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.0-3.el7.elrepo.noarch.rpm</span><br><span class="line">Retrieving http:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.0-3.el7.elrepo.noarch.rpm</span><br><span class="line">Preparing...                          ################################# [100%]</span><br><span class="line">Updating &#x2F; installing...</span><br><span class="line">   1:elrepo-release-7.0-3.el7.elrepo  ################################# [100%]</span><br><span class="line">[root@goingmerry ~]#</span><br></pre></td></tr></table></figure>
+<h3 id="查看ELRepo仓库中可用内核版本信息"><a href="#查看ELRepo仓库中可用内核版本信息" class="headerlink" title="查看ELRepo仓库中可用内核版本信息"></a>查看ELRepo仓库中可用内核版本信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@goingmerry ~]#  yum --disablerepo&#x3D;&quot;*&quot; --enablerepo&#x3D;&quot;elrepo-kernel&quot; list available</span><br><span class="line">Loaded plugins: fastestmirror</span><br><span class="line">elrepo-kernel                                                                                                                                                                   | 2.9 kB  00:00:00</span><br><span class="line">elrepo-kernel&#x2F;primary_db                                                                                                                                                        | 1.7 MB  00:00:01</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"> * elrepo-kernel: ftp.yz.yamagata-u.ac.jp</span><br><span class="line">Available Packages</span><br><span class="line">kernel-lt.x86_64                                                                                   4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-lt-devel.x86_64                                                                             4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-lt-doc.noarch                                                                               4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-lt-headers.x86_64                                                                           4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-lt-tools.x86_64                                                                             4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-lt-tools-libs.x86_64                                                                        4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-lt-tools-libs-devel.x86_64                                                                  4.4.113-1.el7.elrepo                                                                   elrepo-kernel</span><br><span class="line">kernel-ml.x86_64                                                                                   4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">kernel-ml-devel.x86_64                                                                             4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">kernel-ml-doc.noarch                                                                               4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">kernel-ml-headers.x86_64                                                                           4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">kernel-ml-tools.x86_64                                                                             4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">kernel-ml-tools-libs.x86_64                                                                        4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">kernel-ml-tools-libs-devel.x86_64                                                                  4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">perf.x86_64                                                                                        4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">python-perf.x86_64                                                                                 4.15.0-1.el7.elrepo                                                                    elrepo-kernel</span><br><span class="line">[root@goingmerry ~]#</span><br></pre></td></tr></table></figure>
 <p>其中的<code>kernel-ml.x86_64</code>行即为主线稳定版本的内核信息。</p>
-<h3 id="安装最新主线稳定内核"><a href="#安装最新主线稳定内核" class="headerlink" title="安装最新主线稳定内核"></a>安装最新主线稳定内核</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt;  yum --enablerepo=elrepo-kernel install kernel-ml</span><br></pre></td></tr></table></figure>
-<h3 id="生效最新安装"><a href="#生效最新安装" class="headerlink" title="生效最新安装"></a>生效最新安装</h3><p>内核升级完毕后，目前内核还是默认的版本，如果此时直接执行reboot命令，重启后使用的内核版本还是默认的3.10，不会使用新的内核版本。<br>首先，查看默认内核启动顺序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@goingmerry ~]#  awk -F\&apos; &apos;$1==&quot;menuentry &quot; &#123;print $2&#125;&apos; /etc/grub2.cfg</span><br><span class="line">CentOS Linux 7 Rescue dc2d89f844734877bc176dcb9b3bcb6d (4.15.0-1.el7.elrepo.x86_64)</span><br><span class="line">CentOS Linux (4.15.0-1.el7.elrepo.x86_64) 7 (Core)</span><br><span class="line">CentOS Linux (3.10.0-693.11.6.el7.x86_64) 7 (Core)</span><br><span class="line">CentOS Linux (3.10.0-693.el7.x86_64) 7 (Core)</span><br><span class="line">CentOS Linux (0-rescue-c73a5ccf3b8145c3a675b64c4c3ab1d4) 7 (Core)</span><br><span class="line">[root@goingmerry ~]#</span><br></pre></td></tr></table></figure></p>
-<p>由上面可以看出新内核(4.15.0)目前位置在0，原来的内核(3.10.0)目前位置在1，所以如果想生效最新的内核，还需要我们修改内核的启动顺序为0：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; vim /etc/default/grub</span><br></pre></td></tr></table></figure></p>
-<p>将其中的<code>GRUB_DEFAULT=saved</code>修改为<code>GRUB_DEFAULT=0</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GRUB_TIMEOUT=5</span><br><span class="line">GRUB_DISTRIBUTOR=&quot;$(sed &apos;s, release .*$,,g&apos; /etc/system-release)&quot;</span><br><span class="line">GRUB_DEFAULT=saved   =&gt; GRUB_DEFAULT=0</span><br><span class="line">GRUB_DISABLE_SUBMENU=true</span><br><span class="line">GRUB_TERMINAL_OUTPUT=&quot;console&quot;</span><br><span class="line">GRUB_CMDLINE_LINUX=&quot;consoleblank=0 crashkernel=auto rhgb quiet&quot;</span><br><span class="line">GRUB_DISABLE_RECOVERY=&quot;true&quot;</span><br></pre></td></tr></table></figure></p>
-<p>或者使用如下命令修改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub2-set-default 1</span><br></pre></td></tr></table></figure></p>
-<p>接着运行grub2-mkconfig命令来重新创建内核配置，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; grub2-mkconfig -o /boot/grub2/grub.cfg</span><br></pre></td></tr></table></figure></p>
-<p>最后重新启动服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; reboot</span><br></pre></td></tr></table></figure></p>
-<p>重启之后查看当前linux版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@goingmerry ~]# uname -sr</span><br><span class="line">Linux 4.15.0-1.el7.elrepo.x86_64</span><br></pre></td></tr></table></figure></p>
-<p>至此内核升级完毕。</p>
+<h3 id="安装最新主线稳定内核"><a href="#安装最新主线稳定内核" class="headerlink" title="安装最新主线稳定内核"></a>安装最新主线稳定内核</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt;  yum --enablerepo&#x3D;elrepo-kernel install kernel-ml</span><br></pre></td></tr></table></figure>
+<h3 id="生效最新安装"><a href="#生效最新安装" class="headerlink" title="生效最新安装"></a>生效最新安装</h3><p>内核升级完毕后，目前内核还是默认的版本，如果此时直接执行reboot命令，重启后使用的内核版本还是默认的3.10，不会使用新的内核版本。<br>首先，查看默认内核启动顺序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@goingmerry ~]#  awk -F\&#39; &#39;$1&#x3D;&#x3D;&quot;menuentry &quot; &#123;print $2&#125;&#39; &#x2F;etc&#x2F;grub2.cfg</span><br><span class="line">CentOS Linux 7 Rescue dc2d89f844734877bc176dcb9b3bcb6d (4.15.0-1.el7.elrepo.x86_64)</span><br><span class="line">CentOS Linux (4.15.0-1.el7.elrepo.x86_64) 7 (Core)</span><br><span class="line">CentOS Linux (3.10.0-693.11.6.el7.x86_64) 7 (Core)</span><br><span class="line">CentOS Linux (3.10.0-693.el7.x86_64) 7 (Core)</span><br><span class="line">CentOS Linux (0-rescue-c73a5ccf3b8145c3a675b64c4c3ab1d4) 7 (Core)</span><br><span class="line">[root@goingmerry ~]#</span><br></pre></td></tr></table></figure><br>由上面可以看出新内核(4.15.0)目前位置在0，原来的内核(3.10.0)目前位置在1，所以如果想生效最新的内核，还需要我们修改内核的启动顺序为0：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; vim &#x2F;etc&#x2F;default&#x2F;grub</span><br></pre></td></tr></table></figure><br>将其中的<code>GRUB_DEFAULT=saved</code>修改为<code>GRUB_DEFAULT=0</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GRUB_TIMEOUT&#x3D;5</span><br><span class="line">GRUB_DISTRIBUTOR&#x3D;&quot;$(sed &#39;s, release .*$,,g&#39; &#x2F;etc&#x2F;system-release)&quot;</span><br><span class="line">GRUB_DEFAULT&#x3D;saved   &#x3D;&gt; GRUB_DEFAULT&#x3D;0</span><br><span class="line">GRUB_DISABLE_SUBMENU&#x3D;true</span><br><span class="line">GRUB_TERMINAL_OUTPUT&#x3D;&quot;console&quot;</span><br><span class="line">GRUB_CMDLINE_LINUX&#x3D;&quot;consoleblank&#x3D;0 crashkernel&#x3D;auto rhgb quiet&quot;</span><br><span class="line">GRUB_DISABLE_RECOVERY&#x3D;&quot;true&quot;</span><br></pre></td></tr></table></figure><br>或者使用如下命令修改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub2-set-default 1</span><br></pre></td></tr></table></figure><br>接着运行grub2-mkconfig命令来重新创建内核配置，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; grub2-mkconfig -o &#x2F;boot&#x2F;grub2&#x2F;grub.cfg</span><br></pre></td></tr></table></figure><br>最后重新启动服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; reboot</span><br></pre></td></tr></table></figure><br>重启之后查看当前linux版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@goingmerry ~]# uname -sr</span><br><span class="line">Linux 4.15.0-1.el7.elrepo.x86_64</span><br></pre></td></tr></table></figure><br>至此内核升级完毕。</p>
 
       
 
@@ -411,14 +405,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jade</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -428,6 +414,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hapi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -443,14 +441,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
@@ -459,7 +449,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,14 +477,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">synology</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -499,18 +489,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
@@ -519,11 +497,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ueditor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">errors</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,11 +549,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>

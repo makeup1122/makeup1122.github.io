@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://makeup1122.github.io">
-  <title>windows下的Git Hooks执行错误 | makeup1122</title>
+  <title>windows下的Git Hooks执行错误 | makeup1122&#39;s note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题windows系统下git(mingw)的hooks脚本不执行，返回如下错误1error: cannot spawn .git/hooks/post-merge: No error 原因git hooks在windows环境中不像SVN hooks会自动寻找xxxx.bat类的Hook文件来执行，所以必须指定shebang来载入脚本解释器。 解决在hook脚本首行插入shebang，如下：12">
-<meta name="keywords" content="hooks,git">
+  <meta name="description" content="问题windows系统下git(mingw)的hooks脚本不执行，返回如下错误1error: cannot spawn .git&#x2F;hooks&#x2F;post-merge: No error 原因git hooks在windows环境中不像SVN hooks会自动寻找xxxx.bat类的Hook文件来执行，所以必须指定shebang来载入脚本解释器。 解决在hook脚本首行插入she">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows下的Git Hooks执行错误">
 <meta property="og:url" content="http://makeup1122.github.io/2018/07/24/git-hook-error/index.html">
-<meta property="og:site_name" content="makeup1122">
-<meta property="og:description" content="问题windows系统下git(mingw)的hooks脚本不执行，返回如下错误1error: cannot spawn .git/hooks/post-merge: No error 原因git hooks在windows环境中不像SVN hooks会自动寻找xxxx.bat类的Hook文件来执行，所以必须指定shebang来载入脚本解释器。 解决在hook脚本首行插入shebang，如下：12">
+<meta property="og:site_name" content="makeup1122&#39;s note">
+<meta property="og:description" content="问题windows系统下git(mingw)的hooks脚本不执行，返回如下错误1error: cannot spawn .git&#x2F;hooks&#x2F;post-merge: No error 原因git hooks在windows环境中不像SVN hooks会自动寻找xxxx.bat类的Hook文件来执行，所以必须指定shebang来载入脚本解释器。 解决在hook脚本首行插入she">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-01-21T16:16:51.420Z">
+<meta property="article:published_time" content="2018-07-24T02:05:28.000Z">
+<meta property="article:modified_time" content="2019-01-21T16:16:51.420Z">
+<meta property="article:author" content="makeup1122">
+<meta property="article:tag" content="hooks">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="windows下的Git Hooks执行错误">
-<meta name="twitter:description" content="问题windows系统下git(mingw)的hooks脚本不执行，返回如下错误1error: cannot spawn .git/hooks/post-merge: No error 原因git hooks在windows环境中不像SVN hooks会自动寻找xxxx.bat类的Hook文件来执行，所以必须指定shebang来载入脚本解释器。 解决在hook脚本首行插入shebang，如下：12">
   
-    <link rel="alternative" href="/atom.xml" title="makeup1122" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="makeup1122&#39;s note" type="application/atom+xml">
   
   
     <link rel="icon" href="https://nas.goingmerry.cn/favicon.ico">
@@ -37,8 +38,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -167,9 +168,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>windows系统下git(mingw)的hooks脚本不执行，返回如下错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error: cannot spawn .git/hooks/post-merge: No error</span><br></pre></td></tr></table></figure></p>
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>windows系统下git(mingw)的hooks脚本不执行，返回如下错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error: cannot spawn .git&#x2F;hooks&#x2F;post-merge: No error</span><br></pre></td></tr></table></figure></p>
 <h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p>git hooks在windows环境中不像SVN hooks会自动寻找xxxx.bat类的Hook文件来执行，所以必须指定shebang来载入脚本解释器。</p>
-<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>在hook脚本首行插入shebang，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh   #添加解释器</span><br><span class="line">echo -e &quot;--------Start Migrating--------&quot;</span><br><span class="line">cd ./back-end/</span><br><span class="line">php think migrate:run</span><br><span class="line">echo -e &quot;--------End   Migrating--------&quot;</span><br></pre></td></tr></table></figure></p>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>在hook脚本首行插入shebang，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh   #添加解释器</span><br><span class="line">echo -e &quot;--------Start Migrating--------&quot;</span><br><span class="line">cd .&#x2F;back-end&#x2F;</span><br><span class="line">php think migrate:run</span><br><span class="line">echo -e &quot;--------End   Migrating--------&quot;</span><br></pre></td></tr></table></figure></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li><a href="https://stackoverflow.com/questions/5697210/msysgit-error-with-hooks-git-error-cannot-spawn-git-hooks-post-commit-no-su" target="_blank" rel="noopener">https://stackoverflow.com/questions/5697210/msysgit-error-with-hooks-git-error-cannot-spawn-git-hooks-post-commit-no-su</a><h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1></li>
 <li><a href="https://zh.wikipedia.org/zh-hans/Shebang" target="_blank" rel="noopener">Shebang</a></li>
@@ -406,14 +407,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jade</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -423,6 +416,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hapi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -438,14 +443,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
@@ -454,7 +451,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,14 +479,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">synology</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -494,18 +491,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
@@ -514,11 +499,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ueditor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">errors</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,11 +551,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>

@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://makeup1122.github.io">
-  <title>centos6.9升级Mysql版本至5.7 | makeup1122</title>
+  <title>centos6.9升级Mysql版本至5.7 | makeup1122&#39;s note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题最近习惯用Mysql5.7的Json字段类型了，而低于5.7版本的Mysql都不支持JSON字段类型。 升级Mysql安装最新的Mysql的Yum源 下载对应系统的mysql最新Yum源的rpm安装包，下载地址:https://dev.mysql.com/downloads/repo/yum/ 安装步骤1的rpm包,这样就安装好了Mysql最新的Yum源地址库： 1# rpm -ivh mys">
-<meta name="keywords" content="mysql,linux">
+  <meta name="description" content="问题最近习惯用Mysql5.7的Json字段类型了，而低于5.7版本的Mysql都不支持JSON字段类型。 升级Mysql安装最新的Mysql的Yum源 下载对应系统的mysql最新Yum源的rpm安装包，下载地址:https:&#x2F;&#x2F;dev.mysql.com&#x2F;downloads&#x2F;repo&#x2F;yum&#x2F; 安装步骤1的rpm包,这样就安装好了Mysql最新的Yum源地址库：1# rpm -ivh mysq">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos6.9升级Mysql版本至5.7">
 <meta property="og:url" content="http://makeup1122.github.io/2018/03/01/centos6-9UpdateMysql/index.html">
-<meta property="og:site_name" content="makeup1122">
-<meta property="og:description" content="问题最近习惯用Mysql5.7的Json字段类型了，而低于5.7版本的Mysql都不支持JSON字段类型。 升级Mysql安装最新的Mysql的Yum源 下载对应系统的mysql最新Yum源的rpm安装包，下载地址:https://dev.mysql.com/downloads/repo/yum/ 安装步骤1的rpm包,这样就安装好了Mysql最新的Yum源地址库： 1# rpm -ivh mys">
+<meta property="og:site_name" content="makeup1122&#39;s note">
+<meta property="og:description" content="问题最近习惯用Mysql5.7的Json字段类型了，而低于5.7版本的Mysql都不支持JSON字段类型。 升级Mysql安装最新的Mysql的Yum源 下载对应系统的mysql最新Yum源的rpm安装包，下载地址:https:&#x2F;&#x2F;dev.mysql.com&#x2F;downloads&#x2F;repo&#x2F;yum&#x2F; 安装步骤1的rpm包,这样就安装好了Mysql最新的Yum源地址库：1# rpm -ivh mysq">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-01-21T16:16:51.420Z">
+<meta property="article:published_time" content="2018-03-01T08:41:25.000Z">
+<meta property="article:modified_time" content="2019-01-21T16:16:51.420Z">
+<meta property="article:author" content="makeup1122">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="centos6.9升级Mysql版本至5.7">
-<meta name="twitter:description" content="问题最近习惯用Mysql5.7的Json字段类型了，而低于5.7版本的Mysql都不支持JSON字段类型。 升级Mysql安装最新的Mysql的Yum源 下载对应系统的mysql最新Yum源的rpm安装包，下载地址:https://dev.mysql.com/downloads/repo/yum/ 安装步骤1的rpm包,这样就安装好了Mysql最新的Yum源地址库： 1# rpm -ivh mys">
   
-    <link rel="alternative" href="/atom.xml" title="makeup1122" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="makeup1122&#39;s note" type="application/atom+xml">
   
   
     <link rel="icon" href="https://nas.goingmerry.cn/favicon.ico">
@@ -37,8 +38,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -170,31 +171,18 @@
         <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>最近习惯用Mysql5.7的Json字段类型了，而低于5.7版本的Mysql都不支持JSON字段类型。</p>
 <h1 id="升级Mysql"><a href="#升级Mysql" class="headerlink" title="升级Mysql"></a>升级Mysql</h1><h2 id="安装最新的Mysql的Yum源"><a href="#安装最新的Mysql的Yum源" class="headerlink" title="安装最新的Mysql的Yum源"></a>安装最新的Mysql的Yum源</h2><ol>
 <li>下载对应系统的mysql最新Yum源的rpm安装包，下载地址:<a href="https://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/repo/yum/</a></li>
-<li><p>安装步骤1的rpm包,这样就安装好了Mysql最新的Yum源地址库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># rpm -ivh mysql57-community-release-el6-11.noarch.rpmrpm ivh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看当前mysql版本和Yum源中最新的mysql版本(是否满足需求)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum list|grep mysql-community</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行升级命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum update mysql-server</span><br></pre></td></tr></table></figure>
+<li>安装步骤1的rpm包,这样就安装好了Mysql最新的Yum源地址库：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># rpm -ivh mysql57-community-release-el6-11.noarch.rpmrpm ivh</span><br></pre></td></tr></table></figure></li>
+<li>查看当前mysql版本和Yum源中最新的mysql版本(是否满足需求)：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum list|grep mysql-community</span><br></pre></td></tr></table></figure></li>
+<li>执行升级命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># yum update mysql-server</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><h2 id="启动Mysqld失败"><a href="#启动Mysqld失败" class="headerlink" title="启动Mysqld失败"></a>启动Mysqld失败</h2><h3 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h3><p>mysql错误日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] Fatal error: mysql.user table is damaged. Please run mysql_upgrade.</span><br></pre></td></tr></table></figure></p>
-<p>根据提示执行mysql_upgrade，继续报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root]#  mysql_upgrade</span><br><span class="line">mysql_upgrade: Got error: 2002: Can&apos;t connect to local MySQL server through socket &apos;/var/lib/mysql/mysql.sock&apos; (2) while connecting to the MySQL server</span><br><span class="line">Upgrade process encountered error and will not continue.</span><br></pre></td></tr></table></figure></p>
+<h1 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h1><h2 id="启动Mysqld失败"><a href="#启动Mysqld失败" class="headerlink" title="启动Mysqld失败"></a>启动Mysqld失败</h2><h3 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h3><p>mysql错误日志：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] Fatal error: mysql.user table is damaged. Please run mysql_upgrade.</span><br></pre></td></tr></table></figure><br>根据提示执行mysql_upgrade，继续报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root]#  mysql_upgrade</span><br><span class="line">mysql_upgrade: Got error: 2002: Can&#39;t connect to local MySQL server through socket &#39;&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql.sock&#39; (2) while connecting to the MySQL server</span><br><span class="line">Upgrade process encountered error and will not continue.</span><br></pre></td></tr></table></figure></p>
 <h3 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h3><p>Mysql版本升级，却未执行mysql_upgrade所致。</p>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
-<li><p>登陆服务器，编辑/etc/my.cnf文件，找到<code>[mysqld]</code>模块，如下添加<code>skip-grant-tables</code>并保存退出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[mysqld]</span><br><span class="line">skip-grant-tables</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动mysqld服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># service mysqld start</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行<code>mysql_upgrade</code>命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mysql_upgrade</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行完毕后，去掉(或注释)步骤1在/etc/my.cnf中添加的<code>skip-grant-tables</code>选项</p>
-</li>
+<li>登陆服务器，编辑/etc/my.cnf文件，找到<code>[mysqld]</code>模块，如下添加<code>skip-grant-tables</code>并保存退出<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[mysqld]</span><br><span class="line">skip-grant-tables</span><br><span class="line">datadir&#x3D;&#x2F;var&#x2F;lib&#x2F;mysql</span><br><span class="line">socket&#x3D;&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql.sock</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+<li>启动mysqld服务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># service mysqld start</span><br></pre></td></tr></table></figure></li>
+<li>执行<code>mysql_upgrade</code>命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mysql_upgrade</span><br></pre></td></tr></table></figure></li>
+<li>执行完毕后，去掉(或注释)步骤1在/etc/my.cnf中添加的<code>skip-grant-tables</code>选项</li>
 <li>重启mysqld服务：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># service mysqld restart</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -430,14 +418,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jade</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -447,6 +427,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hapi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,14 +454,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
@@ -478,7 +462,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,14 +490,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">synology</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -518,18 +502,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
@@ -538,11 +510,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ueditor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">errors</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,11 +562,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>

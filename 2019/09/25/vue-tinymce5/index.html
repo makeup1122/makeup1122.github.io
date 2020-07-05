@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://makeup1122.github.io">
-  <title>在Vue中使用Tinymce5遇到的问题记录 | makeup1122</title>
+  <title>在Vue中使用Tinymce5遇到的问题记录 | makeup1122&#39;s note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本使用 安装并使用官方的vue集成组件 1$ npm install @tinymce/tinymce-vue  加载组件 1import Editor from &amp;apos;@tinymce/tinymce-vue&amp;apos;;  使用组件 1&amp;lt;editor api-key=&amp;quot;API_KEY&amp;quot; :init=&amp;quot;&amp;#123;plugins: &amp;apos;word">
-<meta name="keywords" content="Vue,TinyMCE">
+  <meta name="description" content="基本使用 安装并使用官方的vue集成组件1$ npm install @tinymce&#x2F;tinymce-vue 加载组件1import Editor from &#39;@tinymce&#x2F;tinymce-vue&#39;; 使用组件1&lt;editor api-key&#x3D;&quot;API_KEY&quot; :init&#x3D;&quot;&amp;#123;plugin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Vue中使用Tinymce5遇到的问题记录">
 <meta property="og:url" content="http://makeup1122.github.io/2019/09/25/vue-tinymce5/index.html">
-<meta property="og:site_name" content="makeup1122">
-<meta property="og:description" content="基本使用 安装并使用官方的vue集成组件 1$ npm install @tinymce/tinymce-vue  加载组件 1import Editor from &amp;apos;@tinymce/tinymce-vue&amp;apos;;  使用组件 1&amp;lt;editor api-key=&amp;quot;API_KEY&amp;quot; :init=&amp;quot;&amp;#123;plugins: &amp;apos;word">
+<meta property="og:site_name" content="makeup1122&#39;s note">
+<meta property="og:description" content="基本使用 安装并使用官方的vue集成组件1$ npm install @tinymce&#x2F;tinymce-vue 加载组件1import Editor from &#39;@tinymce&#x2F;tinymce-vue&#39;; 使用组件1&lt;editor api-key&#x3D;&quot;API_KEY&quot; :init&#x3D;&quot;&amp;#123;plugin">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-10-09T09:16:32.319Z">
+<meta property="article:published_time" content="2019-09-25T14:13:37.000Z">
+<meta property="article:modified_time" content="2019-10-09T09:16:32.319Z">
+<meta property="article:author" content="makeup1122">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="TinyMCE">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在Vue中使用Tinymce5遇到的问题记录">
-<meta name="twitter:description" content="基本使用 安装并使用官方的vue集成组件 1$ npm install @tinymce/tinymce-vue  加载组件 1import Editor from &amp;apos;@tinymce/tinymce-vue&amp;apos;;  使用组件 1&amp;lt;editor api-key=&amp;quot;API_KEY&amp;quot; :init=&amp;quot;&amp;#123;plugins: &amp;apos;word">
   
-    <link rel="alternative" href="/atom.xml" title="makeup1122" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="makeup1122&#39;s note" type="application/atom+xml">
   
   
     <link rel="icon" href="https://nas.goingmerry.cn/favicon.ico">
@@ -37,8 +38,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -168,22 +169,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><ol>
-<li><p>安装并使用官方的<a href="https://www.tiny.cloud/docs/integrations/vue/" target="_blank" rel="noopener">vue集成组件</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install @tinymce/tinymce-vue</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>加载组件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Editor from &apos;@tinymce/tinymce-vue&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用组件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;editor api-key=&quot;API_KEY&quot; :init=&quot;&#123;plugins: &apos;wordcount&apos;&#125;&quot;&gt;&lt;/editor&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>其他配置参见<a href="https://www.tiny.cloud/docs/integrations/vue/#configuringtheeditor" target="_blank" rel="noopener">官方文档</a></p>
-<h1 id="加载用户自定义插件"><a href="#加载用户自定义插件" class="headerlink" title="加载用户自定义插件"></a>加载用户自定义插件</h1></li>
+<li>安装并使用官方的<a href="https://www.tiny.cloud/docs/integrations/vue/" target="_blank" rel="noopener">vue集成组件</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install @tinymce&#x2F;tinymce-vue</span><br></pre></td></tr></table></figure></li>
+<li>加载组件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Editor from &#39;@tinymce&#x2F;tinymce-vue&#39;;</span><br></pre></td></tr></table></figure></li>
+<li>使用组件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;editor api-key&#x3D;&quot;API_KEY&quot; :init&#x3D;&quot;&#123;plugins: &#39;wordcount&#39;&#125;&quot;&gt;&lt;&#x2F;editor&gt;</span><br></pre></td></tr></table></figure></li>
+<li>其他配置参见<a href="https://www.tiny.cloud/docs/integrations/vue/#configuringtheeditor" target="_blank" rel="noopener">官方文档</a><h1 id="加载用户自定义插件"><a href="#加载用户自定义插件" class="headerlink" title="加载用户自定义插件"></a>加载用户自定义插件</h1></li>
 <li>我使用了由<a href="http://tinymce.ax-z.cn/" target="_blank" rel="noopener">tinymce.ax-z.cn</a>提供的<a href="http://tinymce.ax-z.cn/more-plugins/indent2em.php" target="_blank" rel="noopener">首行缩进</a>和<a href="http://tinymce.ax-z.cn/more-plugins/lineheight.php" target="_blank" rel="noopener">设置行高</a>两个插件</li>
-<li>在Tinymce-vue组件中，使用init配置的<a href="https://www.tiny.cloud/docs/configure/integration-and-setup/#setup" target="_blank" rel="noopener">setup</a>参数来加载自定义插件文件，我的一个列子：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  ...</span><br><span class="line">this.init = &#123;</span><br><span class="line">  setup: function() &#123;</span><br><span class="line">    import(&apos;./plugins/lineheight.js&apos;)</span><br><span class="line">    import(&apos;./plugins/indent2em.js&apos;)</span><br><span class="line">  &#125;,</span><br><span class="line">  height: this.height,</span><br><span class="line">  menubar: false,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h1 id="在多层弹出框中-TinyMCE的插件输入框无法获取焦点问题"><a href="#在多层弹出框中-TinyMCE的插件输入框无法获取焦点问题" class="headerlink" title="在多层弹出框中,TinyMCE的插件输入框无法获取焦点问题"></a>在多层弹出框中,TinyMCE的插件输入框无法获取焦点问题</h1><ol>
+<li><p>在Tinymce-vue组件中，使用init配置的<a href="https://www.tiny.cloud/docs/configure/integration-and-setup/#setup" target="_blank" rel="noopener">setup</a>参数来加载自定义插件文件，我的一个列子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  ...</span><br><span class="line">this.init &#x3D; &#123;</span><br><span class="line">  setup: function() &#123;</span><br><span class="line">    import(&#39;.&#x2F;plugins&#x2F;lineheight.js&#39;)</span><br><span class="line">    import(&#39;.&#x2F;plugins&#x2F;indent2em.js&#39;)</span><br><span class="line">  &#125;,</span><br><span class="line">  height: this.height,</span><br><span class="line">  menubar: false,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="在多层弹出框中-TinyMCE的插件输入框无法获取焦点问题"><a href="#在多层弹出框中-TinyMCE的插件输入框无法获取焦点问题" class="headerlink" title="在多层弹出框中,TinyMCE的插件输入框无法获取焦点问题"></a>在多层弹出框中,TinyMCE的插件输入框无法获取焦点问题</h1></li>
 <li><p>如果tinymce-vue组件在多层dialog框中调用，会出现部分带有输入框的插件无法获取焦点从而无法输入内容的情况，因为大部分模态(modal)窗口阻止来获取焦点的行为。可以根据相应的框架进行调整。比如我是用来VuetifyJS的Dialog组件，使用组件提供的<code>retain-focus</code>参数即可解决以上问题。</p>
 </li>
 <li><p>参考文档：<a href="https://stackoverflow.com/questions/36279941/using-tinymce-in-a-modal-dialog" target="_blank" rel="noopener">https://stackoverflow.com/questions/36279941/using-tinymce-in-a-modal-dialog</a></p>
@@ -276,7 +269,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/10/22/Hexo-admin服务器部署/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/10/22/Hexo-admin%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -421,14 +414,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jade</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -438,6 +423,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hapi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,14 +450,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
@@ -469,7 +458,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,14 +486,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">synology</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -509,18 +498,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
@@ -529,11 +506,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ueditor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">errors</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,11 +558,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>

@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://makeup1122.github.io">
-  <title>makeup1122</title>
+  <title>makeup1122&#39;s note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="makeup1122">
+<meta property="og:title" content="makeup1122&#39;s note">
 <meta property="og:url" content="http://makeup1122.github.io/page/3/index.html">
-<meta property="og:site_name" content="makeup1122">
+<meta property="og:site_name" content="makeup1122&#39;s note">
 <meta property="og:locale" content="zh">
+<meta property="article:author" content="makeup1122">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="makeup1122">
   
-    <link rel="alternative" href="/atom.xml" title="makeup1122" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="makeup1122&#39;s note" type="application/atom+xml">
   
   
     <link rel="icon" href="https://nas.goingmerry.cn/favicon.ico">
@@ -32,8 +32,8 @@
 
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -144,6 +144,482 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-docker-command" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/13/docker-command/">docker常用命令</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/13/docker-command/" class="archive-article-date">
+  	<time datetime="2017-11-13T01:41:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+<table>
+    <tr>
+        <th>范围</th>
+        <th>命令</th>
+        <th>说明</th>
+        <th>常用参数</th>
+    </tr>
+    <tr>
+        <td rowspan=7>镜像</td>
+        <td>docker images</td>
+        <td>列出本地镜像</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker inspect</td>
+        <td>获取镜像元数据</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker build</td>
+        <td>构建镜像</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker tag</td>
+        <td>设置镜像标签(别名)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker history</td>
+        <td>查看指定镜像的创建历史</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker save/import </td>
+        <td>保存镜像到文件/从本地文件导入镜像</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker rmi</td>
+        <td>删除本地镜像</td>
+        <td><b>-f</b> :强制删除</td>
+    </tr>
+    <tr>
+        <td rowspan=6>容器</td>
+        <td>docker ps</td>
+        <td>列出容器</td>
+        <td><b>-a</b>:列出所有容器，包括未运行</td>
+    </tr>
+    <tr>
+        <td>docker create</td>
+        <td>创建容器</td>
+        <td>
+            <b>--name</b>:指定容器的名称<br>
+            <b>-p</b>:指定容器对外端口
+        </td>
+    </tr>
+    <tr>
+        <td>docker start/stop/restart</td>
+        <td>管理容器状态</td>
+        <td>
+            <b>-d,--detacg=true|false</b>:是否后台运行容器，默认为否
+        </td>
+    </tr>
+    <tr>
+        <td>docker run</td>
+        <td>创建一个新的容器并运行一个命令</td>
+        <td>
+            <b>-i</b>: 以交互模式运行容器，通常与 -t 同时使用；<br>
+            <b>-t</b>: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+        </td>
+    </tr>
+    <tr>
+        <td>docker rm</td>
+        <td>删除一个容器</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker exec</td>
+        <td>容器中执行命令</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker commit</td>
+        <td>提交对容器的修改</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan=3>仓库</td>
+        <td>docker search</td>
+        <td>搜索仓库镜像</td>
+        <td><b>-f</b> stars=100 :搜索100颗星以上的镜像<br>
+            --filter=stars=100
+        </td>
+    </tr>
+    <tr>
+        <td>docker pull/push</td>
+        <td>拉取/推送镜像到仓库</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker login</td>
+        <td>登陆仓库</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan=2>其他</td>
+        <td>docker version</td>
+        <td>显示版本信息</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>docker info</td>
+        <td>显示系统信息</td>
+        <td></td>
+    </tr>
+</table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/13/docker-command/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-https" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/24/https/">Apache部署https的自签证书</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/24/https/" class="archive-article-date">
+  	<time datetime="2017-10-24T06:25:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="WampServer-3-0-6-64bit-部署https问题"><a href="#WampServer-3-0-6-64bit-部署https问题" class="headerlink" title="WampServer(3.0.6 64bit) 部署https问题"></a>WampServer(3.0.6 64bit) 部署https问题</h3><ol>
+<li>Apache添加ssl_module后无法启动</li>
+</ol>
+<p>使用<code>httpd -t</code>命令测试配置文件，结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cannot load modules&#x2F;mod_ssl.so into server: The operating system cannot</span><br><span class="line">run %1.</span><br></pre></td></tr></table></figure></p>
+<p>原因是OpenSSL版本的问题，应该是我之前装过wmap 32bit版本的原因。到<a href="http://slproweb.com/products/Win32OpenSSL.html" target="_blank" rel="noopener">这里</a>下载合适的版本安装即可。我安装了<code>Win64 OpenSSL v1.0.2L Light</code>后就可以了。</p>
+<ol>
+<li><p>缺少<code>mod_socache_shmcb</code>模块<br>安装好openssl后apache依旧有错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SSLSessionCache: &#39;shmcb&#39; session cache not supported (known names: ). Maybe you need to load the appropriate socache module (mod_socache_shmcb?).</span><br></pre></td></tr></table></figure>
+<p>继续操作httpd.conf打开mod_socache_shmcb模块的注释。</p>
+</li>
+<li><p>修改或者创建httpd-ssl.conf中的logs目录</p>
+</li>
+<li><p><a href="https://localhost" target="_blank" rel="noopener">https://localhost</a> 404错误<br>因为我的wamp设置了多个vhost，都只设置了<code>*:80</code>端口，而未设置https的443端口。在extra/httpd-vhost.conf配置文件中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># https</span><br><span class="line">&lt;VirtualHost *:443&gt;</span><br><span class="line">	ServerName localhost</span><br><span class="line">	DocumentRoot D:&#x2F;wamp64&#x2F;www</span><br><span class="line">	&lt;Directory  &quot;D:&#x2F;wamp64&#x2F;www&#x2F;&quot;&gt;</span><br><span class="line">		Options +Indexes +Includes +FollowSymLinks +MultiViews</span><br><span class="line">		AllowOverride All</span><br><span class="line">		Require all granted</span><br><span class="line">	&lt;&#x2F;Directory&gt;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>此网站无法提供安全连接<br>继续修改httpd-vhost.conf配置文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:443&gt;</span><br><span class="line">	ServerName localhost</span><br><span class="line">	DocumentRoot D:&#x2F;wamp64&#x2F;www</span><br><span class="line">	&lt;Directory  &quot;D:&#x2F;wamp64&#x2F;www&#x2F;&quot;&gt;</span><br><span class="line">		Options +Indexes +Includes +FollowSymLinks +MultiViews</span><br><span class="line">		AllowOverride All</span><br><span class="line">		Require all granted</span><br><span class="line">		# Require local</span><br><span class="line">	&lt;&#x2F;Directory&gt;</span><br><span class="line">	SSLEngine on</span><br><span class="line">	SSLCertificateFile &quot;E:&#x2F;libing&#x2F;https&#x2F;private&#x2F;localhost.crt&quot;</span><br><span class="line">	SSLCertificateKeyFile &quot;E:&#x2F;libing&#x2F;https&#x2F;private&#x2F;private.key&quot;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+<p>其实<code>extra/httpd-ssl.conf</code>就是以vhost的形式配置的，可以删除上面步骤4和5的过程，直接修改<code>extra/httpd-ssl.conf</code>中的<code>ServerName</code>和<code>DocumentRoot</code>即可解决上面的问题。<br>如果要在一个IP地址上部署多个SSL网站，可以设置多个不同的SSL端口或者多个网站和域名都使用同一个证书。这是因为SSL握手协议过程中,是通过IP+Port来进行通信，一个IP的一个端口只能返给客户一张SSL证书（即使有多张证书，也只能返回第一张，因为无法分辨用户会需要返回哪张证书）。</p>
+</li>
+</ol>
+<h3 id="关于Let’s-Encrypt"><a href="#关于Let’s-Encrypt" class="headerlink" title="关于Let’s Encrypt"></a>关于Let’s Encrypt</h3><ol>
+<li>自动部署SSL</li>
+<li>自动续期（测试Synology） </li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://stackoverflow.com/questions/40017498/cannot-load-modules-mod-ssl-so-into-server" target="_blank" rel="noopener">Stackoverflow关于ssl_module的问题。</a></li>
+<li><a href="https://letsencrypt.org" target="_blank" rel="noopener">Let’s Encrypt</a></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">apache</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">https</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Encrypt</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/24/https/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mysql-error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/30/mysql-error/">mysql-error</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/30/mysql-error/" class="archive-article-date">
+  	<time datetime="2017-08-30T01:51:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> [PDOException]<br>  SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect date value: ‘0000-00-00’ for column ‘re_directorytime’ at row 1  </p>
+<p>   SET SESSION sql_mode=’ALLOW_INVALID_DATES’;</p>
+<p>   ALTER TABLE <code>culture</code>.<code>cu_immaterial</code><br>        CHANGE COLUMN <code>content</code> <code>content</code> MEDIUMTEXT NOT NULL ; </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/30/mysql-error/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-git-auto-deploy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/28/git-auto-deploy/">git自动部署实践</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/28/git-auto-deploy/" class="archive-article-date">
+  	<time datetime="2017-07-28T15:11:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><h4 id="ssh免密码登录"><a href="#ssh免密码登录" class="headerlink" title="ssh免密码登录"></a>ssh免密码登录</h4><p>配置ssh-key或pem文件等，用以本地用户可以免密码登录到服务器。</p>
+<h4 id="创建裸库"><a href="#创建裸库" class="headerlink" title="创建裸库"></a>创建裸库</h4><p>在服务器某目录(例：<code>/opt/git</code>)下执行如下命令，生成裸代码仓库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt;git clone --bare git@xxxx.com:test.git</span><br></pre></td></tr></table></figure><br>该命令从远程库拷贝一份裸库到本地。</p>
+<p>或者使用–mirror参数，生成镜像代码仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt;git clone --mirror git@xxxx.com:test.git</span><br></pre></td></tr></table></figure><br>镜像代码仓库也是裸代码仓库，它与裸代码仓库的区别在于：它不仅将源代码仓库的本地分支映射到目标代码仓库的本地分支，而且将所有引用（包括远程跟踪分支、备注等）都进行映射并建立refspec配置以使目标代码仓库的所有引用可被git remote update命令覆盖。</p>
+<h4 id="编写服务端hooks"><a href="#编写服务端hooks" class="headerlink" title="编写服务端hooks"></a>编写服务端hooks</h4><p>进入到版本库的hooks目录下，创建<code>post-receive</code>文件，添加执行权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#&gt;cd test.git&#x2F;hooks &amp;&amp; touch post-receive</span><br><span class="line">#&gt;chmod +x post-receive</span><br></pre></td></tr></table></figure><br>接下来就是编辑你自己的<code>post-receive</code>文件内容了，也就是自动化部署的过程脚本，我的一个tp5的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line">WORK_TREE&#x3D;&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html</span><br><span class="line">echo $&#123;WORK_TREE&#125;</span><br><span class="line">git --work-tree&#x3D;$&#123;WORK_TREE&#125; checkout  develop --force </span><br><span class="line">cd $&#123;WORK_TREE&#125; &amp;&amp; php think migrate:run</span><br></pre></td></tr></table></figure><br>另一个例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line">&#x2F;&#x2F;给ECHO输出添加颜色</span><br><span class="line">echo -e &quot;\033[36m--------------Start Deploy--------------\033[0m&quot;</span><br><span class="line">WWW_DIR&#x3D;&quot;&#x2F;home&#x2F;nginx&#x2F;www-culture-mirror&quot;</span><br><span class="line">&#x2F;&#x2F;目录不存在或无权限则退出脚本</span><br><span class="line">cd $WWW_DIR ||exit</span><br><span class="line">pwd</span><br><span class="line">echo $GIT_DIR</span><br><span class="line">&#x2F;&#x2F;取消GIT_DIR变量，否则会出现错误：“fatal: not a git repository: &#39;.&#39;”</span><br><span class="line">unset GIT_DIR</span><br><span class="line">git pull origin develop</span><br><span class="line">echo -e &quot;\033[33m--------------Start Migrate ------------\033[0m&quot;</span><br><span class="line">.&#x2F;vendor&#x2F;davedevelopment&#x2F;phpmig&#x2F;bin&#x2F;phpmig migrate</span><br><span class="line">echo -e &quot;\033[36m--------------End Success---------------\033[0m&quot;</span><br></pre></td></tr></table></figure></p>
+<h4 id="忽略线上或生产环境的配置文件"><a href="#忽略线上或生产环境的配置文件" class="headerlink" title="忽略线上或生产环境的配置文件"></a>忽略线上或生产环境的配置文件</h4><ol>
+<li>首先正确修改你的项目中的配置文件。</li>
+<li>使用如下命令来告诉git暂时忽略该配置文件的修改：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; git update-index --assume-unchanged config.file</span><br></pre></td></tr></table></figure>
+如果想反悔则：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; git update-index --no-assume-unchanged config.file</span><br></pre></td></tr></table></figure>
+这样该文件就不会出现在<code>git status</code>中</li>
+<li>如果修改的配置文件较多，可以用<code>git ls-files</code>命令查询那些被<code>--assums-unchanged</code>忽略的文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; git ls-files -v |grep &#39;^h\+&#39;</span><br></pre></td></tr></table></figure>
+详情参考<a href="https://git-scm.com/docs/git-ls-files/" target="_blank" rel="noopener">git-ls-files文档</a></li>
+</ol>
+<h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><h4 id="配置远程git库信息"><a href="#配置远程git库信息" class="headerlink" title="配置远程git库信息"></a>配置远程git库信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; git remote add serverAlias sshUser@50.40.30.20:&#x2F;opt&#x2F;git&#x2F;test.git</span><br></pre></td></tr></table></figure>
+<h4 id="推送至远程服务器"><a href="#推送至远程服务器" class="headerlink" title="推送至远程服务器"></a>推送至远程服务器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&gt; git push serverAlias develop</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li>学习ssh config的配置方式和详细配置</li>
+<li>git参数<code>--bare</code>、<code>--work-tree</code>的理解</li>
+<li>git hooks脚本的类型和使用情景</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hooks</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">deploy</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/28/git-auto-deploy/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-nginx-ueditor-issue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -165,8 +641,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在nginx使用过程中，会有很多问题，在此做记录。</p>
-<h3 id="由于请求header过大导致的502错误"><a href="#由于请求header过大导致的502错误" class="headerlink" title="由于请求header过大导致的502错误"></a>由于请求header过大导致的<strong>502</strong>错误</h3><p>测试在一个上传附件图片的功能时，每次上传一个附件会在cookie里缓存附件的路径，当缓存的内容超过1KB时，再次请求后台即会发生502错误。<br>nginx的错误日志如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[error] 9892#0: *79051 upstream sent too big header while reading response header from upstream</span><br></pre></td></tr></table></figure></p>
-<p>原因是nginx配置项中的<code>proxy_buffer_size</code>参数默认是1KB，请求头部内容超过这个默认值就会报错显示502，在配置文件中添加或修改相应的数值即可。</p>
+<h3 id="由于请求header过大导致的502错误"><a href="#由于请求header过大导致的502错误" class="headerlink" title="由于请求header过大导致的502错误"></a>由于请求header过大导致的<strong>502</strong>错误</h3><p>测试在一个上传附件图片的功能时，每次上传一个附件会在cookie里缓存附件的路径，当缓存的内容超过1KB时，再次请求后台即会发生502错误。<br>nginx的错误日志如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[error] 9892#0: *79051 upstream sent too big header while reading response header from upstream</span><br></pre></td></tr></table></figure><br>原因是nginx配置项中的<code>proxy_buffer_size</code>参数默认是1KB，请求头部内容超过这个默认值就会报错显示502，在配置文件中添加或修改相应的数值即可。</p>
 
       
 
@@ -259,12 +734,12 @@
 </li>
 </ul>
 <h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
-<li>去掉php中的index.php<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">    RewriteEngine On</span><br><span class="line">    RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">    RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">    RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure></li>
-<li>匹配手机等移动端<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">    RewriteEngine On</span><br><span class="line">    RewriteCond %&#123;HTTP_USER_AGENT&#125; &quot;android|blackberry|googlebot-mobile|iemobile|ipad|iphone|ipod|opera mobile|palmos|webos&quot; [NC]</span><br><span class="line">    RewriteRule ^(.*)$ /mobile/$1 [L,R=302]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+<li>去掉php中的index.php<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">    RewriteEngine On</span><br><span class="line">    RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">    RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">    RewriteRule ^(.*)$ index.php&#x2F;$1 [QSA,PT,L]</span><br><span class="line">&lt;&#x2F;IfModule&gt;</span><br></pre></td></tr></table></figure></li>
+<li>匹配手机等移动端<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">    RewriteEngine On</span><br><span class="line">    RewriteCond %&#123;HTTP_USER_AGENT&#125; &quot;android|blackberry|googlebot-mobile|iemobile|ipad|iphone|ipod|opera mobile|palmos|webos&quot; [NC]</span><br><span class="line">    RewriteRule ^(.*)$ &#x2F;mobile&#x2F;$1 [L,R&#x3D;302]</span><br><span class="line">&lt;&#x2F;IfModule&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="其他用到过的指令"><a href="#其他用到过的指令" class="headerlink" title="其他用到过的指令"></a>其他用到过的指令</h3><ul>
-<li><strong>ErrorDocument <em>错误码</em> <em>错误页面文档路径</em></strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ErrorDocument 403 /error_page/zjn403.html</span><br><span class="line">ErrorDocument 404 /error_page/zjn404.html</span><br></pre></td></tr></table></figure></li>
+<li><strong>ErrorDocument <em>错误码</em> <em>错误页面文档路径</em></strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ErrorDocument 403 &#x2F;error_page&#x2F;zjn403.html</span><br><span class="line">ErrorDocument 404 &#x2F;error_page&#x2F;zjn404.html</span><br></pre></td></tr></table></figure></li>
 <li><strong>Options +FollowSymlinks -Multiviews</strong><br>Options指令用于启用/关闭某些特性。<code>+FollowSymLinks</code>表示服务器允许在此目录中使用符号连接。<code>-Multiviews</code>不允许使用mod_negotiation提供内容协商的”多重视图”。<code>Options FollowSymLinks</code>必须伴随<code>RewriteEngine On</code>出现。<br>参考:<a href="http://man.chinaunix.net/newsoft/Apache2.2_chinese_manual/mod/directives.html" target="_blank" rel="noopener">http://man.chinaunix.net/newsoft/Apache2.2_chinese_manual/mod/directives.html</a></li>
 </ul>
 
@@ -669,356 +1144,9 @@ php think migrate:run
 
 
   
-    <article id="post-linuxa常用命令小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/07/linuxa常用命令小结/">linux常用命令小结</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/07/linuxa常用命令小结/" class="archive-article-date">
-  	<time datetime="2016-12-07T08:26:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="日常工作中常用命令和工具的记录"><a href="#日常工作中常用命令和工具的记录" class="headerlink" title="日常工作中常用命令和工具的记录"></a>日常工作中常用命令和工具的记录</h3>
-<table>
-<thead><tr><th>命令</th><th>简介</th><th>备注</th></tr></thead>
-<tbody>
-<tr><td>nload</td>
-<td>根据系统网络设备统计流量数据，只能统计网络设备的总流量</td><td>非自带，需安装</td>
-</tr>
-<tr><td>nethogs</td>
-<td>用来按进程或程序实时统计网络带宽使用率</td>
-<td>非自带，需安装</td>
-</tr>
-
-<tr><td>nmap(Network Mapper)</td>
-<td>是Linux下的网络扫描和嗅探工具包。我一般用了扫描本地开放端口...</td>
-<td>nmap -v 127.0.0.1</td>
-</tr>
-
-<tr><td>nc(netcat)</td>
-<td></td>
-<td>非自带，需安装</td>
-</tr>
-
-</tbody>
-</table>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/07/linuxa常用命令小结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-what-s-for-new" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/20/what-s-for-new/">what&#39;s for new?</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/20/what-s-for-new/" class="archive-article-date">
-  	<time datetime="2016-11-20T04:57:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>世界上只有两种编程语言：一种是天天被人喷的，另一种是没人用的。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/20/what-s-for-new/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-this-is-War" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/10/this-is-War/">This&#39;s War!</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/10/this-is-War/" class="archive-article-date">
-  	<time datetime="2016-11-10T08:52:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/69d909a5gw1f7qxqhhj2yg20a305o4r1.gif" alt="这就是你们想要的战争！" title="Optional title"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">photo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/10/this-is-War/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-debug-ssh-auth" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/08/debug-ssh-auth/">调试ssh免密码登录</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/08/debug-ssh-auth/" class="archive-article-date">
-  	<time datetime="2016-11-08T01:44:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="问题及解决"><a href="#问题及解决" class="headerlink" title="问题及解决"></a>问题及解决</h3><p>我的DS215j在升级到DSM6.0后，ssh免密码登录就一直失效，提示</p>
-<pre><code>Using username &quot;admin&quot;.
-Server refused our key
-admin@172.16.5.249&apos;s password:
-</code></pre><p>确定公钥没问题后，很长时间没找到问题，后来在synology论坛看到大神解决方法，找到了问题所在。<br>原来免密码登录需涉及到服务端<strong><em>3个</em></strong>目录或文件的权限问，分别是：</p>
-<pre><code>#&gt;chmod 0755 /home/admin
-#&gt;chmod 0700 /home/admin/.ssh
-#&gt;chmod 0600 /home/admin/.ssh/authorized_keys
-</code></pre><p>之前一直以为只要<code>.ssh</code>目录和<code>authorized_keys</code>文件的权限正确即可，没有想的DSM再升级6.x后，修改了家目录权限。<br>修正家目录的权限，去掉组用户(groups)和其他用户的(others)写权限后，即可免密码登录。</p>
-<h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3><p>大神的发现问题的方法是建立了一个debug模式的sshd临时服务：</p>
-<pre><code>#&gt; /bin/sshd -d -p xxxx
-</code></pre><ul>
-<li>xxx为调试用的端口号</li>
-<li>sshd执行需要使用绝对路径</li>
-<li><code>-d</code>为调试模式，可输出调试信息<br>当家目录权限不正确时，会有如下提示:</li>
-</ul>
-<pre><code>Authentication refused: bad ownership or modes for directory /home/admin
-</code></pre><p>论坛链接:<a href="https://forum.synology.com/enu/viewtopic.php?t=116726" target="_blank" rel="noopener">https://forum.synology.com/enu/viewtopic.php?t=116726</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">synology</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/08/debug-ssh-auth/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1105,14 +1233,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jade</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -1122,6 +1242,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">music</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hapi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1137,14 +1269,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">music</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
@@ -1153,7 +1277,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">synology</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1173,14 +1305,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">synology</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -1193,18 +1317,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">https</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">apache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
@@ -1213,11 +1325,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">apache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">https</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Encrypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ueditor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">errors</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">curl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1245,11 +1377,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>
